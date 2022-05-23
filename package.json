@@ -15,7 +15,7 @@
     "@nuxtjs/eslint-config": "^10.0.0",
     "@vue/test-utils": "^2.0.0-rc.21",
     "core-js": "^3.22.4",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^28.1.0",
     "nuxt": "^2.15.3",
