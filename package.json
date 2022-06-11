@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/skeptycal/skeptycal.github.io/issues"
   },
-  "homepage": "https://github.com/skeptycal/skeptycal.github.io#readme"
+  "homepage": "https://github.com/skeptycal/skeptycal.github.io#readme",
+  "dependencies": {
+    "three": "^0.141.0"
+  }
 }
