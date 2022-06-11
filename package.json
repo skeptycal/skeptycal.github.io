@@ -1,9 +1,0 @@
-{
-  "name": "skeptycal.github.io",
-  "version": "v2.0.0",
-  "description": "Mike's personal page",
-  "main": "index.js",
-  "repository": "https://github.com/skeptycal/skeptycal.github.io.git",
-  "author": "Michael Treanor <skeptycal@gmail.com>",
-  "license": "MIT"
-}
