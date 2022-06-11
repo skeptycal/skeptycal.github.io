@@ -1,5 +1,7 @@
 
 **/.folder_info*
+**private**
+**token**
 **/bak
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,node,yarn,go,vue

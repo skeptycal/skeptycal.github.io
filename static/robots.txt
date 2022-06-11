@@ -1,7 +1,0 @@
-User-agent: Google
-Disallow:
-
-User-agent: *
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /bak/
