@@ -1,21 +1,15 @@
 {
-  "name": "skeptycal.github.io",
-  "version": "2.0.0",
-  "description": "Mike's GitHub profile",
-  "main": "index.js",
+  "name": "skeptycal",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skeptycal/skeptycal.github.io.git"
+  "devDependencies": {
+    "vite": "^2.9.9"
   },
-  "author": "Michael Treanor",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/skeptycal/skeptycal.github.io/issues"
-  },
-  "homepage": "https://github.com/skeptycal/skeptycal.github.io#readme",
   "dependencies": {
     "three": "^0.141.0"
   }

@@ -5,9 +5,10 @@
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.THREE = {}));
-})(this, (function (exports) { 'use strict';
+		typeof define === 'function' && define.amd ? define(['exports'], factory) :
+			(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.THREE = {}));
+})(this, (function (exports) {
+	'use strict';
 
 	const REVISION = '141';
 	const MOUSE = {
@@ -652,7 +653,7 @@
 
 		applyMatrix3(m) {
 			const x = this.x,
-						y = this.y;
+				y = this.y;
 			const e = m.elements;
 			this.x = e[0] * x + e[3] * y + e[6];
 			this.y = e[1] * x + e[4] * y + e[7];
@@ -755,7 +756,7 @@
 
 		distanceToSquared(v) {
 			const dx = this.x - v.x,
-						dy = this.y - v.y;
+				dy = this.y - v.y;
 			return dx * dx + dy * dy;
 		}
 
@@ -807,7 +808,7 @@
 
 		rotateAround(center, angle) {
 			const c = Math.cos(angle),
-						s = Math.sin(angle);
+				s = Math.sin(angle);
 			const x = this.x - center.x;
 			const y = this.y - center.y;
 			this.x = x * c - y * s + center.x;
@@ -898,23 +899,23 @@
 			const be = b.elements;
 			const te = this.elements;
 			const a11 = ae[0],
-						a12 = ae[3],
-						a13 = ae[6];
+				a12 = ae[3],
+				a13 = ae[6];
 			const a21 = ae[1],
-						a22 = ae[4],
-						a23 = ae[7];
+				a22 = ae[4],
+				a23 = ae[7];
 			const a31 = ae[2],
-						a32 = ae[5],
-						a33 = ae[8];
+				a32 = ae[5],
+				a33 = ae[8];
 			const b11 = be[0],
-						b12 = be[3],
-						b13 = be[6];
+				b12 = be[3],
+				b13 = be[6];
 			const b21 = be[1],
-						b22 = be[4],
-						b23 = be[7];
+				b22 = be[4],
+				b23 = be[7];
 			const b31 = be[2],
-						b32 = be[5],
-						b33 = be[8];
+				b32 = be[5],
+				b33 = be[8];
 			te[0] = a11 * b11 + a12 * b21 + a13 * b31;
 			te[3] = a11 * b12 + a12 * b22 + a13 * b32;
 			te[6] = a11 * b13 + a12 * b23 + a13 * b33;
@@ -944,32 +945,32 @@
 		determinant() {
 			const te = this.elements;
 			const a = te[0],
-						b = te[1],
-						c = te[2],
-						d = te[3],
-						e = te[4],
-						f = te[5],
-						g = te[6],
-						h = te[7],
-						i = te[8];
+				b = te[1],
+				c = te[2],
+				d = te[3],
+				e = te[4],
+				f = te[5],
+				g = te[6],
+				h = te[7],
+				i = te[8];
 			return a * e * i - a * f * h - b * d * i + b * f * g + c * d * h - c * e * g;
 		}
 
 		invert() {
 			const te = this.elements,
-						n11 = te[0],
-						n21 = te[1],
-						n31 = te[2],
-						n12 = te[3],
-						n22 = te[4],
-						n32 = te[5],
-						n13 = te[6],
-						n23 = te[7],
-						n33 = te[8],
-						t11 = n33 * n22 - n32 * n23,
-						t12 = n32 * n13 - n33 * n12,
-						t13 = n23 * n12 - n22 * n13,
-						det = n11 * t11 + n21 * t12 + n31 * t13;
+				n11 = te[0],
+				n21 = te[1],
+				n31 = te[2],
+				n12 = te[3],
+				n22 = te[4],
+				n32 = te[5],
+				n13 = te[6],
+				n23 = te[7],
+				n33 = te[8],
+				t11 = n33 * n22 - n32 * n23,
+				t12 = n32 * n13 - n33 * n12,
+				t13 = n23 * n12 - n22 * n13,
+				det = n11 * t11 + n21 * t12 + n31 * t13;
 			if (det === 0) return this.set(0, 0, 0, 0, 0, 0, 0, 0, 0);
 			const detInv = 1 / det;
 			te[0] = t11 * detInv;
@@ -1040,11 +1041,11 @@
 			const s = Math.sin(theta);
 			const te = this.elements;
 			const a11 = te[0],
-						a12 = te[3],
-						a13 = te[6];
+				a12 = te[3],
+				a13 = te[6];
 			const a21 = te[1],
-						a22 = te[4],
-						a23 = te[7];
+				a22 = te[4],
+				a23 = te[7];
 			te[0] = c * a11 + s * a21;
 			te[3] = c * a12 + s * a22;
 			te[6] = c * a13 + s * a23;
@@ -1583,8 +1584,8 @@
 			// h,s,l ranges are in 0.0 - 1.0
 			ColorManagement.fromWorkingColorSpace(toComponents(this, _rgb), colorSpace);
 			const r = _rgb.r,
-						g = _rgb.g,
-						b = _rgb.b;
+				g = _rgb.g,
+				b = _rgb.b;
 			const max = Math.max(r, g, b);
 			const min = Math.min(r, g, b);
 			let hue, saturation;
@@ -2322,9 +2323,9 @@
 
 		applyMatrix4(m) {
 			const x = this.x,
-						y = this.y,
-						z = this.z,
-						w = this.w;
+				y = this.y,
+				z = this.z,
+				w = this.w;
 			const e = m.elements;
 			this.x = e[0] * x + e[4] * y + e[8] * z + e[12] * w;
 			this.y = e[1] * x + e[5] * y + e[9] * z + e[13] * w;
@@ -2362,19 +2363,19 @@
 			let angle, x, y, z; // variables for result
 
 			const epsilon = 0.01,
-						// margin to allow for rounding errors
-			epsilon2 = 0.1,
-						// margin to distinguish between 0 and 180 degrees
-			te = m.elements,
-						m11 = te[0],
-						m12 = te[4],
-						m13 = te[8],
-						m21 = te[1],
-						m22 = te[5],
-						m23 = te[9],
-						m31 = te[2],
-						m32 = te[6],
-						m33 = te[10];
+				// margin to allow for rounding errors
+				epsilon2 = 0.1,
+				// margin to distinguish between 0 and 180 degrees
+				te = m.elements,
+				m11 = te[0],
+				m12 = te[4],
+				m13 = te[8],
+				m21 = te[1],
+				m22 = te[5],
+				m23 = te[9],
+				m31 = te[2],
+				m32 = te[6],
+				m33 = te[10];
 
 			if (Math.abs(m12 - m21) < epsilon && Math.abs(m13 - m31) < epsilon && Math.abs(m23 - m32) < epsilon) {
 				// singularity found
@@ -2832,13 +2833,13 @@
 		static slerpFlat(dst, dstOffset, src0, srcOffset0, src1, srcOffset1, t) {
 			// fuzz-free, array-based Quaternion SLERP operation
 			let x0 = src0[srcOffset0 + 0],
-					y0 = src0[srcOffset0 + 1],
-					z0 = src0[srcOffset0 + 2],
-					w0 = src0[srcOffset0 + 3];
+				y0 = src0[srcOffset0 + 1],
+				z0 = src0[srcOffset0 + 2],
+				w0 = src0[srcOffset0 + 3];
 			const x1 = src1[srcOffset1 + 0],
-						y1 = src1[srcOffset1 + 1],
-						z1 = src1[srcOffset1 + 2],
-						w1 = src1[srcOffset1 + 3];
+				y1 = src1[srcOffset1 + 1],
+				z1 = src1[srcOffset1 + 2],
+				w1 = src1[srcOffset1 + 3];
 
 			if (t === 0) {
 				dst[dstOffset + 0] = x0;
@@ -2859,12 +2860,12 @@
 			if (w0 !== w1 || x0 !== x1 || y0 !== y1 || z0 !== z1) {
 				let s = 1 - t;
 				const cos = x0 * x1 + y0 * y1 + z0 * z1 + w0 * w1,
-							dir = cos >= 0 ? 1 : -1,
-							sqrSin = 1 - cos * cos; // Skip the Slerp for tiny steps to avoid numeric problems:
+					dir = cos >= 0 ? 1 : -1,
+					sqrSin = 1 - cos * cos; // Skip the Slerp for tiny steps to avoid numeric problems:
 
 				if (sqrSin > Number.EPSILON) {
 					const sin = Math.sqrt(sqrSin),
-								len = Math.atan2(sin, cos * dir);
+						len = Math.atan2(sin, cos * dir);
 					s = Math.sin(s * len) / sin;
 					t = Math.sin(t * len) / sin;
 				}
@@ -2978,9 +2979,9 @@
 			}
 
 			const x = euler._x,
-						y = euler._y,
-						z = euler._z,
-						order = euler._order; // http://www.mathworks.com/matlabcentral/fileexchange/
+				y = euler._y,
+				z = euler._z,
+				order = euler._order; // http://www.mathworks.com/matlabcentral/fileexchange/
 			// 	20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
 			//	content/SpinCalc.m
 
@@ -3048,7 +3049,7 @@
 			// http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
 			// assumes axis is normalized
 			const halfAngle = angle / 2,
-						s = Math.sin(halfAngle);
+				s = Math.sin(halfAngle);
 			this._x = axis.x * s;
 			this._y = axis.y * s;
 			this._z = axis.z * s;
@@ -3063,16 +3064,16 @@
 			// http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
 			// assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 			const te = m.elements,
-						m11 = te[0],
-						m12 = te[4],
-						m13 = te[8],
-						m21 = te[1],
-						m22 = te[5],
-						m23 = te[9],
-						m31 = te[2],
-						m32 = te[6],
-						m33 = te[10],
-						trace = m11 + m22 + m33;
+				m11 = te[0],
+				m12 = te[4],
+				m13 = te[8],
+				m21 = te[1],
+				m22 = te[5],
+				m23 = te[9],
+				m31 = te[2],
+				m32 = te[6],
+				m33 = te[10],
+				trace = m11 + m22 + m33;
 
 			if (trace > 0) {
 				const s = 0.5 / Math.sqrt(trace + 1.0);
@@ -3215,13 +3216,13 @@
 		multiplyQuaternions(a, b) {
 			// from http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/code/index.htm
 			const qax = a._x,
-						qay = a._y,
-						qaz = a._z,
-						qaw = a._w;
+				qay = a._y,
+				qaz = a._z,
+				qaw = a._w;
 			const qbx = b._x,
-						qby = b._y,
-						qbz = b._z,
-						qbw = b._w;
+				qby = b._y,
+				qbz = b._z,
+				qbw = b._w;
 			this._x = qax * qbw + qaw * qbx + qay * qbz - qaz * qby;
 			this._y = qay * qbw + qaw * qby + qaz * qbx - qax * qbz;
 			this._z = qaz * qbw + qaw * qbz + qax * qby - qay * qbx;
@@ -3236,9 +3237,9 @@
 			if (t === 0) return this;
 			if (t === 1) return this.copy(qb);
 			const x = this._x,
-						y = this._y,
-						z = this._z,
-						w = this._w; // http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/slerp/
+				y = this._y,
+				z = this._z,
+				w = this._w; // http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/slerp/
 
 			let cosHalfTheta = w * qb._w + x * qb._x + y * qb._y + z * qb._z;
 
@@ -3278,7 +3279,7 @@
 			const sinHalfTheta = Math.sqrt(sqrSinHalfTheta);
 			const halfTheta = Math.atan2(sinHalfTheta, cosHalfTheta);
 			const ratioA = Math.sin((1 - t) * halfTheta) / sinHalfTheta,
-						ratioB = Math.sin(t * halfTheta) / sinHalfTheta;
+				ratioB = Math.sin(t * halfTheta) / sinHalfTheta;
 			this._w = w * ratioA + this._w * ratioB;
 			this._x = x * ratioA + this._x * ratioB;
 			this._y = y * ratioA + this._y * ratioB;
@@ -3341,7 +3342,7 @@
 			return this;
 		}
 
-		_onChangeCallback() {}
+		_onChangeCallback() { }
 
 		*[Symbol.iterator]() {
 			yield this._x;
@@ -3538,8 +3539,8 @@
 
 		applyMatrix3(m) {
 			const x = this.x,
-						y = this.y,
-						z = this.z;
+				y = this.y,
+				z = this.z;
 			const e = m.elements;
 			this.x = e[0] * x + e[3] * y + e[6] * z;
 			this.y = e[1] * x + e[4] * y + e[7] * z;
@@ -3553,8 +3554,8 @@
 
 		applyMatrix4(m) {
 			const x = this.x,
-						y = this.y,
-						z = this.z;
+				y = this.y,
+				z = this.z;
 			const e = m.elements;
 			const w = 1 / (e[3] * x + e[7] * y + e[11] * z + e[15]);
 			this.x = (e[0] * x + e[4] * y + e[8] * z + e[12]) * w;
@@ -3565,12 +3566,12 @@
 
 		applyQuaternion(q) {
 			const x = this.x,
-						y = this.y,
-						z = this.z;
+				y = this.y,
+				z = this.z;
 			const qx = q.x,
-						qy = q.y,
-						qz = q.z,
-						qw = q.w; // calculate quat * vector
+				qy = q.y,
+				qz = q.z,
+				qw = q.w; // calculate quat * vector
 
 			const ix = qw * x + qy * z - qz * y;
 			const iy = qw * y + qz * x - qx * z;
@@ -3595,8 +3596,8 @@
 			// input: THREE.Matrix4 affine matrix
 			// vector interpreted as a direction
 			const x = this.x,
-						y = this.y,
-						z = this.z;
+				y = this.y,
+				z = this.z;
 			const e = m.elements;
 			this.x = e[0] * x + e[4] * y + e[8] * z;
 			this.y = e[1] * x + e[5] * y + e[9] * z;
@@ -3734,11 +3735,11 @@
 
 		crossVectors(a, b) {
 			const ax = a.x,
-						ay = a.y,
-						az = a.z;
+				ay = a.y,
+				az = a.z;
 			const bx = b.x,
-						by = b.y,
-						bz = b.z;
+				by = b.y,
+				bz = b.z;
 			this.x = ay * bz - az * by;
 			this.y = az * bx - ax * bz;
 			this.z = ax * by - ay * bx;
@@ -3778,8 +3779,8 @@
 
 		distanceToSquared(v) {
 			const dx = this.x - v.x,
-						dy = this.y - v.y,
-						dz = this.z - v.z;
+				dy = this.y - v.y,
+				dz = this.z - v.z;
 			return dx * dx + dy * dy + dz * dz;
 		}
 
@@ -4695,8 +4696,8 @@
 		intersectBox(box, target) {
 			let tmin, tmax, tymin, tymax, tzmin, tzmax;
 			const invdirx = 1 / this.direction.x,
-						invdiry = 1 / this.direction.y,
-						invdirz = 1 / this.direction.z;
+				invdiry = 1 / this.direction.y,
+				invdirz = 1 / this.direction.z;
 			const origin = this.origin;
 
 			if (invdirx >= 0) {
@@ -4879,7 +4880,7 @@
 
 		copyPosition(m) {
 			const te = this.elements,
-						me = m.elements;
+				me = m.elements;
 			te[12] = me[12];
 			te[13] = me[13];
 			te[14] = me[14];
@@ -4941,20 +4942,20 @@
 
 			const te = this.elements;
 			const x = euler.x,
-						y = euler.y,
-						z = euler.z;
+				y = euler.y,
+				z = euler.z;
 			const a = Math.cos(x),
-						b = Math.sin(x);
+				b = Math.sin(x);
 			const c = Math.cos(y),
-						d = Math.sin(y);
+				d = Math.sin(y);
 			const e = Math.cos(z),
-						f = Math.sin(z);
+				f = Math.sin(z);
 
 			if (euler.order === 'XYZ') {
 				const ae = a * e,
-							af = a * f,
-							be = b * e,
-							bf = b * f;
+					af = a * f,
+					be = b * e,
+					bf = b * f;
 				te[0] = c * e;
 				te[4] = -c * f;
 				te[8] = d;
@@ -4966,9 +4967,9 @@
 				te[10] = a * c;
 			} else if (euler.order === 'YXZ') {
 				const ce = c * e,
-							cf = c * f,
-							de = d * e,
-							df = d * f;
+					cf = c * f,
+					de = d * e,
+					df = d * f;
 				te[0] = ce + df * b;
 				te[4] = de * b - cf;
 				te[8] = a * d;
@@ -4980,9 +4981,9 @@
 				te[10] = a * c;
 			} else if (euler.order === 'ZXY') {
 				const ce = c * e,
-							cf = c * f,
-							de = d * e,
-							df = d * f;
+					cf = c * f,
+					de = d * e,
+					df = d * f;
 				te[0] = ce - df * b;
 				te[4] = -a * f;
 				te[8] = de + cf * b;
@@ -4994,9 +4995,9 @@
 				te[10] = a * c;
 			} else if (euler.order === 'ZYX') {
 				const ae = a * e,
-							af = a * f,
-							be = b * e,
-							bf = b * f;
+					af = a * f,
+					be = b * e,
+					bf = b * f;
 				te[0] = c * e;
 				te[4] = be * d - af;
 				te[8] = ae * d + bf;
@@ -5008,9 +5009,9 @@
 				te[10] = a * c;
 			} else if (euler.order === 'YZX') {
 				const ac = a * c,
-							ad = a * d,
-							bc = b * c,
-							bd = b * d;
+					ad = a * d,
+					bc = b * c,
+					bd = b * d;
 				te[0] = c * e;
 				te[4] = bd - ac * f;
 				te[8] = bc * f + ad;
@@ -5022,9 +5023,9 @@
 				te[10] = ac - bd * f;
 			} else if (euler.order === 'XZY') {
 				const ac = a * c,
-							ad = a * d,
-							bc = b * c,
-							bd = b * d;
+					ad = a * d,
+					bc = b * c,
+					bd = b * d;
 				te[0] = c * e;
 				te[4] = -f;
 				te[8] = d * e;
@@ -5113,37 +5114,37 @@
 			const be = b.elements;
 			const te = this.elements;
 			const a11 = ae[0],
-						a12 = ae[4],
-						a13 = ae[8],
-						a14 = ae[12];
+				a12 = ae[4],
+				a13 = ae[8],
+				a14 = ae[12];
 			const a21 = ae[1],
-						a22 = ae[5],
-						a23 = ae[9],
-						a24 = ae[13];
+				a22 = ae[5],
+				a23 = ae[9],
+				a24 = ae[13];
 			const a31 = ae[2],
-						a32 = ae[6],
-						a33 = ae[10],
-						a34 = ae[14];
+				a32 = ae[6],
+				a33 = ae[10],
+				a34 = ae[14];
 			const a41 = ae[3],
-						a42 = ae[7],
-						a43 = ae[11],
-						a44 = ae[15];
+				a42 = ae[7],
+				a43 = ae[11],
+				a44 = ae[15];
 			const b11 = be[0],
-						b12 = be[4],
-						b13 = be[8],
-						b14 = be[12];
+				b12 = be[4],
+				b13 = be[8],
+				b14 = be[12];
 			const b21 = be[1],
-						b22 = be[5],
-						b23 = be[9],
-						b24 = be[13];
+				b22 = be[5],
+				b23 = be[9],
+				b24 = be[13];
 			const b31 = be[2],
-						b32 = be[6],
-						b33 = be[10],
-						b34 = be[14];
+				b32 = be[6],
+				b33 = be[10],
+				b34 = be[14];
 			const b41 = be[3],
-						b42 = be[7],
-						b43 = be[11],
-						b44 = be[15];
+				b42 = be[7],
+				b43 = be[11],
+				b44 = be[15];
 			te[0] = a11 * b11 + a12 * b21 + a13 * b31 + a14 * b41;
 			te[4] = a11 * b12 + a12 * b22 + a13 * b32 + a14 * b42;
 			te[8] = a11 * b13 + a12 * b23 + a13 * b33 + a14 * b43;
@@ -5187,21 +5188,21 @@
 		determinant() {
 			const te = this.elements;
 			const n11 = te[0],
-						n12 = te[4],
-						n13 = te[8],
-						n14 = te[12];
+				n12 = te[4],
+				n13 = te[8],
+				n14 = te[12];
 			const n21 = te[1],
-						n22 = te[5],
-						n23 = te[9],
-						n24 = te[13];
+				n22 = te[5],
+				n23 = te[9],
+				n24 = te[13];
 			const n31 = te[2],
-						n32 = te[6],
-						n33 = te[10],
-						n34 = te[14];
+				n32 = te[6],
+				n33 = te[10],
+				n34 = te[14];
 			const n41 = te[3],
-						n42 = te[7],
-						n43 = te[11],
-						n44 = te[15]; //TODO: make this more efficient
+				n42 = te[7],
+				n43 = te[11],
+				n44 = te[15]; //TODO: make this more efficient
 			//( based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm )
 
 			return n41 * (+n14 * n23 * n32 - n13 * n24 * n32 - n14 * n22 * n33 + n12 * n24 * n33 + n13 * n22 * n34 - n12 * n23 * n34) + n42 * (+n11 * n23 * n34 - n11 * n24 * n33 + n14 * n21 * n33 - n13 * n21 * n34 + n13 * n24 * n31 - n14 * n23 * n31) + n43 * (+n11 * n24 * n32 - n11 * n22 * n34 - n14 * n21 * n32 + n12 * n21 * n34 + n14 * n22 * n31 - n12 * n24 * n31) + n44 * (-n13 * n22 * n31 - n11 * n23 * n32 + n11 * n22 * n33 + n13 * n21 * n32 - n12 * n21 * n33 + n12 * n23 * n31);
@@ -5250,26 +5251,26 @@
 		invert() {
 			// based on http://www.euclideanspace.com/maths/algebra/matrix/functions/inverse/fourD/index.htm
 			const te = this.elements,
-						n11 = te[0],
-						n21 = te[1],
-						n31 = te[2],
-						n41 = te[3],
-						n12 = te[4],
-						n22 = te[5],
-						n32 = te[6],
-						n42 = te[7],
-						n13 = te[8],
-						n23 = te[9],
-						n33 = te[10],
-						n43 = te[11],
-						n14 = te[12],
-						n24 = te[13],
-						n34 = te[14],
-						n44 = te[15],
-						t11 = n23 * n34 * n42 - n24 * n33 * n42 + n24 * n32 * n43 - n22 * n34 * n43 - n23 * n32 * n44 + n22 * n33 * n44,
-						t12 = n14 * n33 * n42 - n13 * n34 * n42 - n14 * n32 * n43 + n12 * n34 * n43 + n13 * n32 * n44 - n12 * n33 * n44,
-						t13 = n13 * n24 * n42 - n14 * n23 * n42 + n14 * n22 * n43 - n12 * n24 * n43 - n13 * n22 * n44 + n12 * n23 * n44,
-						t14 = n14 * n23 * n32 - n13 * n24 * n32 - n14 * n22 * n33 + n12 * n24 * n33 + n13 * n22 * n34 - n12 * n23 * n34;
+				n11 = te[0],
+				n21 = te[1],
+				n31 = te[2],
+				n41 = te[3],
+				n12 = te[4],
+				n22 = te[5],
+				n32 = te[6],
+				n42 = te[7],
+				n13 = te[8],
+				n23 = te[9],
+				n33 = te[10],
+				n43 = te[11],
+				n14 = te[12],
+				n24 = te[13],
+				n34 = te[14],
+				n44 = te[15],
+				t11 = n23 * n34 * n42 - n24 * n33 * n42 + n24 * n32 * n43 - n22 * n34 * n43 - n23 * n32 * n44 + n22 * n33 * n44,
+				t12 = n14 * n33 * n42 - n13 * n34 * n42 - n14 * n32 * n43 + n12 * n34 * n43 + n13 * n32 * n44 - n12 * n33 * n44,
+				t13 = n13 * n24 * n42 - n14 * n23 * n42 + n14 * n22 * n43 - n12 * n24 * n43 - n13 * n22 * n44 + n12 * n23 * n44,
+				t14 = n14 * n23 * n32 - n13 * n24 * n32 - n14 * n22 * n33 + n12 * n24 * n33 + n13 * n22 * n34 - n12 * n23 * n34;
 			const det = n11 * t11 + n21 * t12 + n31 * t13 + n41 * t14;
 			if (det === 0) return this.set(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			const detInv = 1 / det;
@@ -5295,8 +5296,8 @@
 		scale(v) {
 			const te = this.elements;
 			const x = v.x,
-						y = v.y,
-						z = v.z;
+				y = v.y,
+				z = v.z;
 			te[0] *= x;
 			te[4] *= y;
 			te[8] *= z;
@@ -5327,21 +5328,21 @@
 
 		makeRotationX(theta) {
 			const c = Math.cos(theta),
-						s = Math.sin(theta);
+				s = Math.sin(theta);
 			this.set(1, 0, 0, 0, 0, c, -s, 0, 0, s, c, 0, 0, 0, 0, 1);
 			return this;
 		}
 
 		makeRotationY(theta) {
 			const c = Math.cos(theta),
-						s = Math.sin(theta);
+				s = Math.sin(theta);
 			this.set(c, 0, s, 0, 0, 1, 0, 0, -s, 0, c, 0, 0, 0, 0, 1);
 			return this;
 		}
 
 		makeRotationZ(theta) {
 			const c = Math.cos(theta),
-						s = Math.sin(theta);
+				s = Math.sin(theta);
 			this.set(c, -s, 0, 0, s, c, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 			return this;
 		}
@@ -5352,10 +5353,10 @@
 			const s = Math.sin(angle);
 			const t = 1 - c;
 			const x = axis.x,
-						y = axis.y,
-						z = axis.z;
+				y = axis.y,
+				z = axis.z;
 			const tx = t * x,
-						ty = t * y;
+				ty = t * y;
 			this.set(tx * x + c, tx * y - s * z, tx * z + s * y, 0, tx * y + s * z, ty * y + c, ty * z - s * x, 0, tx * z - s * y, ty * z + s * x, t * z * z + c, 0, 0, 0, 0, 1);
 			return this;
 		}
@@ -5373,24 +5374,24 @@
 		compose(position, quaternion, scale) {
 			const te = this.elements;
 			const x = quaternion._x,
-						y = quaternion._y,
-						z = quaternion._z,
-						w = quaternion._w;
+				y = quaternion._y,
+				z = quaternion._z,
+				w = quaternion._w;
 			const x2 = x + x,
-						y2 = y + y,
-						z2 = z + z;
+				y2 = y + y,
+				z2 = z + z;
 			const xx = x * x2,
-						xy = x * y2,
-						xz = x * z2;
+				xy = x * y2,
+				xz = x * z2;
 			const yy = y * y2,
-						yz = y * z2,
-						zz = z * z2;
+				yz = y * z2,
+				zz = z * z2;
 			const wx = w * x2,
-						wy = w * y2,
-						wz = w * z2;
+				wy = w * y2,
+				wz = w * z2;
 			const sx = scale.x,
-						sy = scale.y,
-						sz = scale.z;
+				sy = scale.y,
+				sz = scale.z;
 			te[0] = (1 - (yy + zz)) * sx;
 			te[1] = (xy + wz) * sx;
 			te[2] = (xz - wy) * sx;
@@ -5644,14 +5645,14 @@
 			// assumes the upper 3x3 of m is a pure rotation matrix (i.e, unscaled)
 			const te = m.elements;
 			const m11 = te[0],
-						m12 = te[4],
-						m13 = te[8];
+				m12 = te[4],
+				m13 = te[8];
 			const m21 = te[1],
-						m22 = te[5],
-						m23 = te[9];
+				m22 = te[5],
+				m23 = te[9];
 			const m31 = te[2],
-						m32 = te[6],
-						m33 = te[10];
+				m32 = te[6],
+				m33 = te[10];
 
 			switch (order) {
 				case 'XYZ':
@@ -5786,7 +5787,7 @@
 			return this;
 		}
 
-		_onChangeCallback() {}
+		_onChangeCallback() { }
 
 		*[Symbol.iterator]() {
 			yield this._x;
@@ -5945,9 +5946,9 @@
 			this.userData = {};
 		}
 
-		onBeforeRender() {}
+		onBeforeRender() { }
 
-		onAfterRender() {}
+		onAfterRender() { }
 
 		applyMatrix4(matrix) {
 			if (this.matrixAutoUpdate) this.updateMatrix();
@@ -6204,7 +6205,7 @@
 			return target.set(e[8], e[9], e[10]).normalize();
 		}
 
-		raycast() {}
+		raycast() { }
 
 		traverse(callback) {
 			callback(this);
@@ -6664,8 +6665,8 @@
 
 		closestPointToPoint(p, target) {
 			const a = this.a,
-						b = this.b,
-						c = this.c;
+				b = this.b,
+				c = this.c;
 			let v, w; // algorithm thanks to Real-Time Collision Detection by Christer Ericson,
 			// published by Morgan Kaufmann Publishers, (c) 2005 Elsevier Inc.,
 			// under the accompanying license; see chapter 5.1.5 for detailed explanation.
@@ -6815,11 +6816,11 @@
 			this._alphaTest = value;
 		}
 
-		onBuild() {}
+		onBuild() { }
 
-		onBeforeRender() {}
+		onBeforeRender() { }
 
-		onBeforeCompile() {}
+		onBeforeCompile() { }
 
 		customProgramCacheKey() {
 			return this.onBeforeCompile.toString();
@@ -7126,7 +7127,7 @@
 
 	Material.fromType = function
 		/*type*/
-	() {
+		() {
 		// TODO: Behavior added in Materials.js
 		return null;
 	};
@@ -7205,7 +7206,7 @@
 			this.version = 0;
 		}
 
-		onUploadCallback() {}
+		onUploadCallback() { }
 
 		set needsUpdate(value) {
 			if (value === true) this.version++;
@@ -7888,7 +7889,7 @@
 
 			const tangents = this.getAttribute('tangent').array;
 			const tan1 = [],
-						tan2 = [];
+				tan2 = [];
 
 			for (let i = 0; i < nVertices; i++) {
 				tan1[i] = new Vector3();
@@ -7896,13 +7897,13 @@
 			}
 
 			const vA = new Vector3(),
-						vB = new Vector3(),
-						vC = new Vector3(),
-						uvA = new Vector2(),
-						uvB = new Vector2(),
-						uvC = new Vector2(),
-						sdir = new Vector3(),
-						tdir = new Vector3();
+				vB = new Vector3(),
+				vC = new Vector3(),
+				uvA = new Vector2(),
+				uvB = new Vector2(),
+				uvC = new Vector2(),
+				sdir = new Vector3(),
+				tdir = new Vector3();
 
 			function handleTriangle(a, b, c) {
 				vA.fromArray(positions, a * 3);
@@ -7948,9 +7949,9 @@
 			}
 
 			const tmp = new Vector3(),
-						tmp2 = new Vector3();
+				tmp2 = new Vector3();
 			const n = new Vector3(),
-						n2 = new Vector3();
+				n2 = new Vector3();
 
 			function handleVertex(v) {
 				n.fromArray(normals, v * 3);
@@ -8000,13 +8001,13 @@
 				}
 
 				const pA = new Vector3(),
-							pB = new Vector3(),
-							pC = new Vector3();
+					pB = new Vector3(),
+					pC = new Vector3();
 				const nA = new Vector3(),
-							nB = new Vector3(),
-							nC = new Vector3();
+					nB = new Vector3(),
+					nC = new Vector3();
 				const cb = new Vector3(),
-							ab = new Vector3(); // indexed elements
+					ab = new Vector3(); // indexed elements
 
 				if (index) {
 					for (let i = 0, il = index.count; i < il; i += 3) {
@@ -8098,7 +8099,7 @@
 				const normalized = attribute.normalized;
 				const array2 = new array.constructor(indices.length * itemSize);
 				let index = 0,
-						index2 = 0;
+					index2 = 0;
 
 				for (let i = 0, l = indices.length; i < l; i++) {
 					if (attribute.isInterleavedBufferAttribute) {
@@ -9127,7 +9128,7 @@
 
 			if (this.view !== null && this.view.enabled) {
 				const fullWidth = view.fullWidth,
-							fullHeight = view.fullHeight;
+					fullHeight = view.fullHeight;
 				left += view.offsetX * width / fullWidth;
 				top -= view.offsetY * height / fullHeight;
 				width *= view.width / fullWidth;
@@ -9157,7 +9158,7 @@
 	}
 
 	const fov = 90,
-				aspect = 1;
+		aspect = 1;
 
 	class CubeCamera extends Object3D {
 		constructor(near, far, renderTarget) {
@@ -9288,8 +9289,8 @@
 					}
 				},
 				vertexShader:
-				/* glsl */
-				`
+					/* glsl */
+					`
 
 				varying vec3 vWorldDirection;
 
@@ -9309,8 +9310,8 @@
 				}
 			`,
 				fragmentShader:
-				/* glsl */
-				`
+					/* glsl */
+					`
 
 				uniform sampler2D tEquirect;
 
@@ -9536,21 +9537,21 @@
 			const planes = this.planes;
 			const me = m.elements;
 			const me0 = me[0],
-						me1 = me[1],
-						me2 = me[2],
-						me3 = me[3];
+				me1 = me[1],
+				me2 = me[2],
+				me3 = me[3];
 			const me4 = me[4],
-						me5 = me[5],
-						me6 = me[6],
-						me7 = me[7];
+				me5 = me[5],
+				me6 = me[6],
+				me7 = me[7];
 			const me8 = me[8],
-						me9 = me[9],
-						me10 = me[10],
-						me11 = me[11];
+				me9 = me[9],
+				me10 = me[10],
+				me11 = me[11];
 			const me12 = me[12],
-						me13 = me[13],
-						me14 = me[14],
-						me15 = me[15];
+				me13 = me[13],
+				me14 = me[14],
+				me15 = me[15];
 			planes[0].setComponents(me3 - me0, me7 - me4, me11 - me8, me15 - me12).normalize();
 			planes[1].setComponents(me3 + me0, me7 + me4, me11 + me8, me15 + me12).normalize();
 			planes[2].setComponents(me3 + me1, me7 + me5, me11 + me9, me15 + me13).normalize();
@@ -11470,23 +11471,23 @@
 	function WebGLClipping(properties) {
 		const scope = this;
 		let globalState = null,
-				numGlobalPlanes = 0,
-				localClippingEnabled = false,
-				renderingShadows = false;
+			numGlobalPlanes = 0,
+			localClippingEnabled = false,
+			renderingShadows = false;
 		const plane = new Plane(),
-					viewNormalMatrix = new Matrix3(),
-					uniform = {
-			value: null,
-			needsUpdate: false
-		};
+			viewNormalMatrix = new Matrix3(),
+			uniform = {
+				value: null,
+				needsUpdate: false
+			};
 		this.uniform = uniform;
 		this.numPlanes = 0;
 		this.numIntersection = 0;
 
 		this.init = function (planes, enableLocalClipping, camera) {
 			const enabled = planes.length !== 0 || enableLocalClipping || // enable state of previous frame - the clipping code has to
-			// run another frame in order to reset the state:
-			numGlobalPlanes !== 0 || localClippingEnabled;
+				// run another frame in order to reset the state:
+				numGlobalPlanes !== 0 || localClippingEnabled;
 			localClippingEnabled = enableLocalClipping;
 			globalState = projectPlanes(planes, camera, 0);
 			numGlobalPlanes = planes.length;
@@ -11505,8 +11506,8 @@
 
 		this.setState = function (material, camera, useCache) {
 			const planes = material.clippingPlanes,
-						clipIntersection = material.clipIntersection,
-						clipShadows = material.clipShadows;
+				clipIntersection = material.clipIntersection,
+				clipShadows = material.clipShadows;
 			const materialProperties = properties.get(material);
 
 			if (!localClippingEnabled || planes === null || planes.length === 0 || renderingShadows && !clipShadows) {
@@ -11519,7 +11520,7 @@
 				}
 			} else {
 				const nGlobal = renderingShadows ? 0 : numGlobalPlanes,
-							lGlobal = nGlobal * 4;
+					lGlobal = nGlobal * 4;
 				let dstArray = materialProperties.clippingState || null;
 				uniform.value = dstArray; // ensure unique state
 
@@ -11554,7 +11555,7 @@
 
 				if (skipTransform !== true || dstArray === null) {
 					const flatSize = dstOffset + nPlanes * 4,
-								viewMatrix = camera.matrixWorldInverse;
+						viewMatrix = camera.matrixWorldInverse;
 					viewNormalMatrix.getNormalMatrix(viewMatrix);
 
 					if (dstArray === null || dstArray.length < flatSize) {
@@ -12265,8 +12266,8 @@
 			},
 			vertexShader: _getCommonVertexShader(),
 			fragmentShader:
-			/* glsl */
-			`
+				/* glsl */
+				`
 
 			precision mediump float;
 			precision mediump int;
@@ -12344,8 +12345,8 @@
 			},
 			vertexShader: _getCommonVertexShader(),
 			fragmentShader:
-			/* glsl */
-			`
+				/* glsl */
+				`
 
 			precision mediump float;
 			precision mediump int;
@@ -12384,8 +12385,8 @@
 			},
 			vertexShader: _getCommonVertexShader(),
 			fragmentShader:
-			/* glsl */
-			`
+				/* glsl */
+				`
 
 			precision mediump float;
 			precision mediump int;
@@ -12863,7 +12864,7 @@
 	function denormalize(morph, attribute) {
 		let denominator = 1;
 		const array = attribute.isInterleavedBufferAttribute ? attribute.data.array : attribute.array;
-		if (array instanceof Int8Array) denominator = 127;else if (array instanceof Int16Array) denominator = 32767;else if (array instanceof Int32Array) denominator = 2147483647;else console.error('THREE.WebGLMorphtargets: Unsupported morph attribute data type: ', array);
+		if (array instanceof Int8Array) denominator = 127; else if (array instanceof Int16Array) denominator = 32767; else if (array instanceof Int32Array) denominator = 2147483647; else console.error('THREE.WebGLMorphtargets: Unsupported morph attribute data type: ', array);
 		morph.divideScalar(denominator);
 	}
 
@@ -13840,16 +13841,16 @@
 
 	function parseUniform(activeInfo, addr, container) {
 		const path = activeInfo.name,
-					pathLength = path.length; // reset RegExp object, because of the early exit of a previous run
+			pathLength = path.length; // reset RegExp object, because of the early exit of a previous run
 
 		RePathPart.lastIndex = 0;
 
 		while (true) {
 			const match = RePathPart.exec(path),
-						matchEnd = RePathPart.lastIndex;
+				matchEnd = RePathPart.lastIndex;
 			let id = match[1];
 			const idIsIndex = match[2] === ']',
-						subscript = match[3];
+				subscript = match[3];
 			if (idIsIndex) id = id | 0; // convert to integer
 
 			if (subscript === undefined || subscript === '[' && matchEnd + 2 === pathLength) {
@@ -13880,7 +13881,7 @@
 
 			for (let i = 0; i < n; ++i) {
 				const info = gl.getActiveUniform(program, i),
-							addr = gl.getUniformLocation(program, info.name);
+					addr = gl.getUniformLocation(program, info.name);
 				parseUniform(info, addr, this);
 			}
 		}
@@ -13898,7 +13899,7 @@
 		static upload(gl, seq, values, textures) {
 			for (let i = 0, n = seq.length; i !== n; ++i) {
 				const u = seq[i],
-							v = values[u.id];
+					v = values[u.id];
 
 				if (v.needsUpdate !== false) {
 					// note: always updating when .needsUpdate is undefined
@@ -14231,8 +14232,8 @@
 		} else {
 			prefixVertex = [generatePrecision(parameters), '#define SHADER_NAME ' + parameters.shaderName, customDefines, parameters.instancing ? '#define USE_INSTANCING' : '', parameters.instancingColor ? '#define USE_INSTANCING_COLOR' : '', parameters.supportsVertexTextures ? '#define VERTEX_TEXTURES' : '', parameters.useFog && parameters.fog ? '#define USE_FOG' : '', parameters.useFog && parameters.fogExp2 ? '#define FOG_EXP2' : '', parameters.map ? '#define USE_MAP' : '', parameters.envMap ? '#define USE_ENVMAP' : '', parameters.envMap ? '#define ' + envMapModeDefine : '', parameters.lightMap ? '#define USE_LIGHTMAP' : '', parameters.aoMap ? '#define USE_AOMAP' : '', parameters.emissiveMap ? '#define USE_EMISSIVEMAP' : '', parameters.bumpMap ? '#define USE_BUMPMAP' : '', parameters.normalMap ? '#define USE_NORMALMAP' : '', parameters.normalMap && parameters.objectSpaceNormalMap ? '#define OBJECTSPACE_NORMALMAP' : '', parameters.normalMap && parameters.tangentSpaceNormalMap ? '#define TANGENTSPACE_NORMALMAP' : '', parameters.clearcoatMap ? '#define USE_CLEARCOATMAP' : '', parameters.clearcoatRoughnessMap ? '#define USE_CLEARCOAT_ROUGHNESSMAP' : '', parameters.clearcoatNormalMap ? '#define USE_CLEARCOAT_NORMALMAP' : '', parameters.iridescenceMap ? '#define USE_IRIDESCENCEMAP' : '', parameters.iridescenceThicknessMap ? '#define USE_IRIDESCENCE_THICKNESSMAP' : '', parameters.displacementMap && parameters.supportsVertexTextures ? '#define USE_DISPLACEMENTMAP' : '', parameters.specularMap ? '#define USE_SPECULARMAP' : '', parameters.specularIntensityMap ? '#define USE_SPECULARINTENSITYMAP' : '', parameters.specularColorMap ? '#define USE_SPECULARCOLORMAP' : '', parameters.roughnessMap ? '#define USE_ROUGHNESSMAP' : '', parameters.metalnessMap ? '#define USE_METALNESSMAP' : '', parameters.alphaMap ? '#define USE_ALPHAMAP' : '', parameters.transmission ? '#define USE_TRANSMISSION' : '', parameters.transmissionMap ? '#define USE_TRANSMISSIONMAP' : '', parameters.thicknessMap ? '#define USE_THICKNESSMAP' : '', parameters.sheenColorMap ? '#define USE_SHEENCOLORMAP' : '', parameters.sheenRoughnessMap ? '#define USE_SHEENROUGHNESSMAP' : '', parameters.vertexTangents ? '#define USE_TANGENT' : '', parameters.vertexColors ? '#define USE_COLOR' : '', parameters.vertexAlphas ? '#define USE_COLOR_ALPHA' : '', parameters.vertexUvs ? '#define USE_UV' : '', parameters.uvsVertexOnly ? '#define UVS_VERTEX_ONLY' : '', parameters.flatShading ? '#define FLAT_SHADED' : '', parameters.skinning ? '#define USE_SKINNING' : '', parameters.morphTargets ? '#define USE_MORPHTARGETS' : '', parameters.morphNormals && parameters.flatShading === false ? '#define USE_MORPHNORMALS' : '', parameters.morphColors && parameters.isWebGL2 ? '#define USE_MORPHCOLORS' : '', parameters.morphTargetsCount > 0 && parameters.isWebGL2 ? '#define MORPHTARGETS_TEXTURE' : '', parameters.morphTargetsCount > 0 && parameters.isWebGL2 ? '#define MORPHTARGETS_TEXTURE_STRIDE ' + parameters.morphTextureStride : '', parameters.morphTargetsCount > 0 && parameters.isWebGL2 ? '#define MORPHTARGETS_COUNT ' + parameters.morphTargetsCount : '', parameters.doubleSided ? '#define DOUBLE_SIDED' : '', parameters.flipSided ? '#define FLIP_SIDED' : '', parameters.shadowMapEnabled ? '#define USE_SHADOWMAP' : '', parameters.shadowMapEnabled ? '#define ' + shadowMapTypeDefine : '', parameters.sizeAttenuation ? '#define USE_SIZEATTENUATION' : '', parameters.logarithmicDepthBuffer ? '#define USE_LOGDEPTHBUF' : '', parameters.logarithmicDepthBuffer && parameters.rendererExtensionFragDepth ? '#define USE_LOGDEPTHBUF_EXT' : '', 'uniform mat4 modelMatrix;', 'uniform mat4 modelViewMatrix;', 'uniform mat4 projectionMatrix;', 'uniform mat4 viewMatrix;', 'uniform mat3 normalMatrix;', 'uniform vec3 cameraPosition;', 'uniform bool isOrthographic;', '#ifdef USE_INSTANCING', '	attribute mat4 instanceMatrix;', '#endif', '#ifdef USE_INSTANCING_COLOR', '	attribute vec3 instanceColor;', '#endif', 'attribute vec3 position;', 'attribute vec3 normal;', 'attribute vec2 uv;', '#ifdef USE_TANGENT', '	attribute vec4 tangent;', '#endif', '#if defined( USE_COLOR_ALPHA )', '	attribute vec4 color;', '#elif defined( USE_COLOR )', '	attribute vec3 color;', '#endif', '#if ( defined( USE_MORPHTARGETS ) && ! defined( MORPHTARGETS_TEXTURE ) )', '	attribute vec3 morphTarget0;', '	attribute vec3 morphTarget1;', '	attribute vec3 morphTarget2;', '	attribute vec3 morphTarget3;', '	#ifdef USE_MORPHNORMALS', '		attribute vec3 morphNormal0;', '		attribute vec3 morphNormal1;', '		attribute vec3 morphNormal2;', '		attribute vec3 morphNormal3;', '	#else', '		attribute vec3 morphTarget4;', '		attribute vec3 morphTarget5;', '		attribute vec3 morphTarget6;', '		attribute vec3 morphTarget7;', '	#endif', '#endif', '#ifdef USE_SKINNING', '	attribute vec4 skinIndex;', '	attribute vec4 skinWeight;', '#endif', '\n'].filter(filterEmptyLine).join('\n');
 			prefixFragment = [customExtensions, generatePrecision(parameters), '#define SHADER_NAME ' + parameters.shaderName, customDefines, parameters.useFog && parameters.fog ? '#define USE_FOG' : '', parameters.useFog && parameters.fogExp2 ? '#define FOG_EXP2' : '', parameters.map ? '#define USE_MAP' : '', parameters.matcap ? '#define USE_MATCAP' : '', parameters.envMap ? '#define USE_ENVMAP' : '', parameters.envMap ? '#define ' + envMapTypeDefine : '', parameters.envMap ? '#define ' + envMapModeDefine : '', parameters.envMap ? '#define ' + envMapBlendingDefine : '', envMapCubeUVSize ? '#define CUBEUV_TEXEL_WIDTH ' + envMapCubeUVSize.texelWidth : '', envMapCubeUVSize ? '#define CUBEUV_TEXEL_HEIGHT ' + envMapCubeUVSize.texelHeight : '', envMapCubeUVSize ? '#define CUBEUV_MAX_MIP ' + envMapCubeUVSize.maxMip + '.0' : '', parameters.lightMap ? '#define USE_LIGHTMAP' : '', parameters.aoMap ? '#define USE_AOMAP' : '', parameters.emissiveMap ? '#define USE_EMISSIVEMAP' : '', parameters.bumpMap ? '#define USE_BUMPMAP' : '', parameters.normalMap ? '#define USE_NORMALMAP' : '', parameters.normalMap && parameters.objectSpaceNormalMap ? '#define OBJECTSPACE_NORMALMAP' : '', parameters.normalMap && parameters.tangentSpaceNormalMap ? '#define TANGENTSPACE_NORMALMAP' : '', parameters.clearcoat ? '#define USE_CLEARCOAT' : '', parameters.clearcoatMap ? '#define USE_CLEARCOATMAP' : '', parameters.clearcoatRoughnessMap ? '#define USE_CLEARCOAT_ROUGHNESSMAP' : '', parameters.clearcoatNormalMap ? '#define USE_CLEARCOAT_NORMALMAP' : '', parameters.iridescence ? '#define USE_IRIDESCENCE' : '', parameters.iridescenceMap ? '#define USE_IRIDESCENCEMAP' : '', parameters.iridescenceThicknessMap ? '#define USE_IRIDESCENCE_THICKNESSMAP' : '', parameters.specularMap ? '#define USE_SPECULARMAP' : '', parameters.specularIntensityMap ? '#define USE_SPECULARINTENSITYMAP' : '', parameters.specularColorMap ? '#define USE_SPECULARCOLORMAP' : '', parameters.roughnessMap ? '#define USE_ROUGHNESSMAP' : '', parameters.metalnessMap ? '#define USE_METALNESSMAP' : '', parameters.alphaMap ? '#define USE_ALPHAMAP' : '', parameters.alphaTest ? '#define USE_ALPHATEST' : '', parameters.sheen ? '#define USE_SHEEN' : '', parameters.sheenColorMap ? '#define USE_SHEENCOLORMAP' : '', parameters.sheenRoughnessMap ? '#define USE_SHEENROUGHNESSMAP' : '', parameters.transmission ? '#define USE_TRANSMISSION' : '', parameters.transmissionMap ? '#define USE_TRANSMISSIONMAP' : '', parameters.thicknessMap ? '#define USE_THICKNESSMAP' : '', parameters.decodeVideoTexture ? '#define DECODE_VIDEO_TEXTURE' : '', parameters.vertexTangents ? '#define USE_TANGENT' : '', parameters.vertexColors || parameters.instancingColor ? '#define USE_COLOR' : '', parameters.vertexAlphas ? '#define USE_COLOR_ALPHA' : '', parameters.vertexUvs ? '#define USE_UV' : '', parameters.uvsVertexOnly ? '#define UVS_VERTEX_ONLY' : '', parameters.gradientMap ? '#define USE_GRADIENTMAP' : '', parameters.flatShading ? '#define FLAT_SHADED' : '', parameters.doubleSided ? '#define DOUBLE_SIDED' : '', parameters.flipSided ? '#define FLIP_SIDED' : '', parameters.shadowMapEnabled ? '#define USE_SHADOWMAP' : '', parameters.shadowMapEnabled ? '#define ' + shadowMapTypeDefine : '', parameters.premultipliedAlpha ? '#define PREMULTIPLIED_ALPHA' : '', parameters.physicallyCorrectLights ? '#define PHYSICALLY_CORRECT_LIGHTS' : '', parameters.logarithmicDepthBuffer ? '#define USE_LOGDEPTHBUF' : '', parameters.logarithmicDepthBuffer && parameters.rendererExtensionFragDepth ? '#define USE_LOGDEPTHBUF_EXT' : '', 'uniform mat4 viewMatrix;', 'uniform vec3 cameraPosition;', 'uniform bool isOrthographic;', parameters.toneMapping !== NoToneMapping ? '#define TONE_MAPPING' : '', parameters.toneMapping !== NoToneMapping ? ShaderChunk['tonemapping_pars_fragment'] : '', // this code is required here because it is used by the toneMapping() function defined below
-			parameters.toneMapping !== NoToneMapping ? getToneMappingFunction('toneMapping', parameters.toneMapping) : '', parameters.dithering ? '#define DITHERING' : '', parameters.opaque ? '#define OPAQUE' : '', ShaderChunk['encodings_pars_fragment'], // this code is required here because it is used by the various encoding/decoding function defined below
-			getTexelEncodingFunction('linearToOutputTexel', parameters.outputEncoding), parameters.useDepthPacking ? '#define DEPTH_PACKING ' + parameters.depthPacking : '', '\n'].filter(filterEmptyLine).join('\n');
+				parameters.toneMapping !== NoToneMapping ? getToneMappingFunction('toneMapping', parameters.toneMapping) : '', parameters.dithering ? '#define DITHERING' : '', parameters.opaque ? '#define OPAQUE' : '', ShaderChunk['encodings_pars_fragment'], // this code is required here because it is used by the various encoding/decoding function defined below
+				getTexelEncodingFunction('linearToOutputTexel', parameters.outputEncoding), parameters.useDepthPacking ? '#define DEPTH_PACKING ' + parameters.depthPacking : '', '\n'].filter(filterEmptyLine).join('\n');
 		}
 
 		vertexShader = resolveIncludes(vertexShader);
@@ -15152,8 +15153,8 @@
 
 		function setup(lights, physicallyCorrectLights) {
 			let r = 0,
-					g = 0,
-					b = 0;
+				g = 0,
+				b = 0;
 
 			for (let i = 0; i < 9; i++) state.probe[i].set(0, 0, 0);
 
@@ -15523,14 +15524,14 @@
 		let _frustum = new Frustum();
 
 		const _shadowMapSize = new Vector2(),
-					_viewportSize = new Vector2(),
-					_viewport = new Vector4(),
-					_depthMaterial = new MeshDepthMaterial({
-			depthPacking: RGBADepthPacking
-		}),
-					_distanceMaterial = new MeshDistanceMaterial(),
-					_materialCache = {},
-					_maxTextureSize = _capabilities.maxTextureSize;
+			_viewportSize = new Vector2(),
+			_viewport = new Vector4(),
+			_depthMaterial = new MeshDepthMaterial({
+				depthPacking: RGBADepthPacking
+			}),
+			_distanceMaterial = new MeshDistanceMaterial(),
+			_materialCache = {},
+			_maxTextureSize = _capabilities.maxTextureSize;
 
 		const shadowSide = {
 			0: BackSide,
@@ -15717,7 +15718,7 @@
 				// in this case we need a unique material instance reflecting the
 				// appropriate state
 				const keyA = result.uuid,
-							keyB = material.uuid;
+					keyB = material.uuid;
 				let materialsForVariant = _materialCache[keyA];
 
 				if (materialsForVariant === undefined) {
@@ -16621,14 +16622,14 @@
 
 		try {
 			useOffscreenCanvas = typeof OffscreenCanvas !== 'undefined' // eslint-disable-next-line compat/compat
-			&& new OffscreenCanvas(1, 1).getContext('2d') !== null;
+				&& new OffscreenCanvas(1, 1).getContext('2d') !== null;
 		} catch (err) {// Ignore any errors
 		}
 
 		function createCanvas(width, height) {
 			// Use OffscreenCanvas when available. Specially needed in web workers
 			return useOffscreenCanvas ? // eslint-disable-next-line compat/compat
-			new OffscreenCanvas(width, height) : createElementNS('canvas');
+				new OffscreenCanvas(width, height) : createElementNS('canvas');
 		}
 
 		function resizeImage(image, needsPowerOfTwo, needsNewCanvas, maxSize) {
@@ -17089,9 +17090,9 @@
 				let image = resizeImage(texture.image, needsPowerOfTwo, false, maxTextureSize);
 				image = verifyColorSpace(texture, image);
 				const supportsMips = isPowerOfTwo$1(image) || isWebGL2,
-							glFormat = utils.convert(texture.format, texture.encoding);
+					glFormat = utils.convert(texture.format, texture.encoding);
 				let glType = utils.convert(texture.type),
-						glInternalFormat = getInternalFormat(texture.internalFormat, glFormat, glType, texture.encoding, texture.isVideoTexture);
+					glInternalFormat = getInternalFormat(texture.internalFormat, glFormat, glType, texture.encoding, texture.isVideoTexture);
 				setTextureParameters(textureType, texture, supportsMips);
 				let mipmap;
 				const mipmaps = texture.mipmaps;
@@ -17236,7 +17237,7 @@
 							state.texStorage2D(_gl.TEXTURE_2D, levels, glInternalFormat, image.width, image.height);
 						} else {
 							let width = image.width,
-									height = image.height;
+								height = image.height;
 
 							for (let i = 0; i < levels; i++) {
 								state.texImage2D(_gl.TEXTURE_2D, i, glInternalFormat, width, height, 0, glFormat, glType, null);
@@ -17321,10 +17322,10 @@
 				}
 
 				const image = cubeImage[0],
-							supportsMips = isPowerOfTwo$1(image) || isWebGL2,
-							glFormat = utils.convert(texture.format, texture.encoding),
-							glType = utils.convert(texture.type),
-							glInternalFormat = getInternalFormat(texture.internalFormat, glFormat, glType, texture.encoding);
+					supportsMips = isPowerOfTwo$1(image) || isWebGL2,
+					glFormat = utils.convert(texture.format, texture.encoding),
+					glType = utils.convert(texture.type),
+					glInternalFormat = getInternalFormat(texture.internalFormat, glFormat, glType, texture.encoding);
 				const useTexStorage = isWebGL2 && texture.isVideoTexture !== true;
 				const allocateMemory = source.__currentVersion === undefined || forceUpload === true;
 				let levels = getMipLevels(texture, image, supportsMips);
@@ -18827,7 +18828,7 @@
 				onAnimationFrameCallback = callback;
 			};
 
-			this.dispose = function () {};
+			this.dispose = function () { };
 		}
 
 	}
@@ -19291,14 +19292,14 @@
 		this.isWebGLRenderer = true;
 
 		const _canvas = parameters.canvas !== undefined ? parameters.canvas : createCanvasElement(),
-					_context = parameters.context !== undefined ? parameters.context : null,
-					_depth = parameters.depth !== undefined ? parameters.depth : true,
-					_stencil = parameters.stencil !== undefined ? parameters.stencil : true,
-					_antialias = parameters.antialias !== undefined ? parameters.antialias : false,
-					_premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true,
-					_preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false,
-					_powerPreference = parameters.powerPreference !== undefined ? parameters.powerPreference : 'default',
-					_failIfMajorPerformanceCaveat = parameters.failIfMajorPerformanceCaveat !== undefined ? parameters.failIfMajorPerformanceCaveat : false;
+			_context = parameters.context !== undefined ? parameters.context : null,
+			_depth = parameters.depth !== undefined ? parameters.depth : true,
+			_stencil = parameters.stencil !== undefined ? parameters.stencil : true,
+			_antialias = parameters.antialias !== undefined ? parameters.antialias : false,
+			_premultipliedAlpha = parameters.premultipliedAlpha !== undefined ? parameters.premultipliedAlpha : true,
+			_preserveDrawingBuffer = parameters.preserveDrawingBuffer !== undefined ? parameters.preserveDrawingBuffer : false,
+			_powerPreference = parameters.powerPreference !== undefined ? parameters.powerPreference : 'default',
+			_failIfMajorPerformanceCaveat = parameters.failIfMajorPerformanceCaveat !== undefined ? parameters.failIfMajorPerformanceCaveat : false;
 
 		let _alpha;
 
@@ -19713,7 +19714,7 @@
 
 		function
 			/* event */
-		onContextRestore() {
+			onContextRestore() {
 			console.log('THREE.WebGLRenderer: Context Restored.');
 			_isContextLost = false;
 			const infoAutoReset = info.autoReset;
@@ -20339,7 +20340,7 @@
 			let refreshMaterial = false;
 			let refreshLights = false;
 			const p_uniforms = program.getUniforms(),
-						m_uniforms = materialProperties.uniforms;
+				m_uniforms = materialProperties.uniforms;
 
 			if (state.useProgram(program.program)) {
 				refreshProgram = true;
@@ -20621,8 +20622,8 @@
 					const halfFloatSupportedByExt = textureType === HalfFloatType && (extensions.has('EXT_color_buffer_half_float') || capabilities.isWebGL2 && extensions.has('EXT_color_buffer_float'));
 
 					if (textureType !== UnsignedByteType && utils.convert(textureType) !== _gl.getParameter(_gl.IMPLEMENTATION_COLOR_READ_TYPE) && // Edge and Chrome Mac < 52 (#9513)
-					!(textureType === FloatType && (capabilities.isWebGL2 || extensions.has('OES_texture_float') || extensions.has('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
-					!halfFloatSupportedByExt) {
+						!(textureType === FloatType && (capabilities.isWebGL2 || extensions.has('OES_texture_float') || extensions.has('WEBGL_color_buffer_float'))) && // Chrome Mac >= 52 and Firefox
+						!halfFloatSupportedByExt) {
 						console.error('THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not in UnsignedByteType or implementation defined type.');
 						return;
 					} // the following if statement ensures valid read requests (no out-of-bounds pixels, see #8604)
@@ -20778,7 +20779,7 @@
 		}
 	}
 
-	class WebGL1Renderer extends WebGLRenderer {}
+	class WebGL1Renderer extends WebGLRenderer { }
 
 	WebGL1Renderer.prototype.isWebGL1Renderer = true;
 
@@ -20880,7 +20881,7 @@
 			this.uuid = generateUUID();
 		}
 
-		onUploadCallback() {}
+		onUploadCallback() { }
 
 		set needsUpdate(value) {
 			if (value === true) this.version++;
@@ -21878,7 +21879,7 @@
 			matrix.toArray(this.instanceMatrix.array, index * 16);
 		}
 
-		updateMorphTargets() {}
+		updateMorphTargets() { }
 
 		dispose() {
 			this.dispatchEvent({
@@ -22430,7 +22431,7 @@
 			this.needsUpdate = false;
 			const cache = [];
 			let current,
-					last = this.getPoint(0);
+				last = this.getPoint(0);
 			let sum = 0;
 			cache.push(0);
 
@@ -22465,8 +22466,8 @@
 
 
 			let low = 0,
-					high = il - 1,
-					comparison;
+				high = il - 1,
+				comparison;
 
 			while (low <= high) {
 				i = Math.floor(low + (high - low) / 2); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
@@ -22760,9 +22761,9 @@
 
 	function CubicPoly() {
 		let c0 = 0,
-				c1 = 0,
-				c2 = 0,
-				c3 = 0;
+			c1 = 0,
+			c2 = 0,
+			c3 = 0;
 		/*
 		 * Compute coefficients for a cubic polynomial
 		 *	 p(s) = c0 + c1*s + c2*s^2 + c3*s^3
@@ -22803,8 +22804,8 @@
 
 	const tmp = new Vector3();
 	const px = new CubicPoly(),
-				py = new CubicPoly(),
-				pz = new CubicPoly();
+		py = new CubicPoly(),
+		pz = new CubicPoly();
 
 	class CatmullRomCurve3 extends Curve {
 		constructor(points = [], closed = false, curveType = 'centripetal', tension = 0.5) {
@@ -22990,9 +22991,9 @@
 		getPoint(t, optionalTarget = new Vector2()) {
 			const point = optionalTarget;
 			const v0 = this.v0,
-						v1 = this.v1,
-						v2 = this.v2,
-						v3 = this.v3;
+				v1 = this.v1,
+				v2 = this.v2,
+				v3 = this.v3;
 			point.set(CubicBezier(t, v0.x, v1.x, v2.x, v3.x), CubicBezier(t, v0.y, v1.y, v2.y, v3.y));
 			return point;
 		}
@@ -23040,9 +23041,9 @@
 		getPoint(t, optionalTarget = new Vector3()) {
 			const point = optionalTarget;
 			const v0 = this.v0,
-						v1 = this.v1,
-						v2 = this.v2,
-						v3 = this.v3;
+				v1 = this.v1,
+				v2 = this.v2,
+				v3 = this.v3;
 			point.set(CubicBezier(t, v0.x, v1.x, v2.x, v3.x), CubicBezier(t, v0.y, v1.y, v2.y, v3.y), CubicBezier(t, v0.z, v1.z, v2.z, v3.z));
 			return point;
 		}
@@ -23195,8 +23196,8 @@
 		getPoint(t, optionalTarget = new Vector2()) {
 			const point = optionalTarget;
 			const v0 = this.v0,
-						v1 = this.v1,
-						v2 = this.v2;
+				v1 = this.v1,
+				v2 = this.v2;
 			point.set(QuadraticBezier(t, v0.x, v1.x, v2.x), QuadraticBezier(t, v0.y, v1.y, v2.y));
 			return point;
 		}
@@ -23240,8 +23241,8 @@
 		getPoint(t, optionalTarget = new Vector3()) {
 			const point = optionalTarget;
 			const v0 = this.v0,
-						v1 = this.v1,
-						v2 = this.v2;
+				v1 = this.v1,
+				v2 = this.v2;
 			point.set(QuadraticBezier(t, v0.x, v1.x, v2.x), QuadraticBezier(t, v0.y, v1.y, v2.y), QuadraticBezier(t, v0.z, v1.z, v2.z));
 			return point;
 		}
@@ -23566,7 +23567,7 @@
 		}
 
 		splineThru(pts
-		/*Array of Vector*/
+			/*Array of Vector*/
 		) {
 			const npts = [this.currentPoint.clone()].concat(pts);
 			const curve = new SplineCurve(npts);
@@ -24218,10 +24219,10 @@
 			const t = (1 + Math.sqrt(5)) / 2;
 			const r = 1 / t;
 			const vertices = [// (±1, ±1, ±1)
-			-1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, // (0, ±1/φ, ±φ)
-			0, -r, -t, 0, -r, t, 0, r, -t, 0, r, t, // (±1/φ, ±φ, 0)
-			-r, -t, 0, -r, t, 0, r, -t, 0, r, t, 0, // (±φ, 0, ±1/φ)
-			-t, 0, -r, t, 0, -r, -t, 0, r, t, 0, r];
+				-1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, // (0, ±1/φ, ±φ)
+				0, -r, -t, 0, -r, t, 0, r, -t, 0, r, t, // (±1/φ, ±φ, 0)
+				-r, -t, 0, -r, t, 0, r, -t, 0, r, t, 0, // (±φ, 0, ±1/φ)
+				-t, 0, -r, t, 0, -r, -t, 0, r, t, 0, r];
 			const indices = [3, 11, 7, 3, 7, 15, 3, 15, 13, 7, 19, 17, 7, 17, 6, 7, 6, 15, 17, 4, 8, 17, 8, 10, 17, 10, 6, 8, 0, 16, 8, 16, 2, 8, 2, 10, 0, 12, 1, 0, 1, 18, 0, 18, 16, 6, 10, 2, 6, 2, 13, 6, 13, 15, 2, 16, 18, 2, 18, 3, 2, 3, 13, 18, 1, 9, 18, 9, 11, 18, 11, 3, 4, 14, 12, 4, 12, 0, 4, 0, 8, 11, 9, 5, 11, 5, 19, 11, 19, 7, 19, 5, 14, 19, 14, 4, 19, 4, 17, 1, 12, 14, 1, 14, 5, 1, 5, 9];
 			super(vertices, indices, radius, detail);
 			this.type = 'DodecahedronGeometry';
@@ -24476,7 +24477,7 @@
 		if (!start) return start;
 		if (!end) end = start;
 		let p = start,
-				again;
+			again;
 
 		do {
 			again = false;
@@ -24500,8 +24501,8 @@
 
 		if (!pass && invSize) indexCurve(ear, minX, minY, invSize);
 		let stop = ear,
-				prev,
-				next; // iterate through ears, slicing them one by one
+			prev,
+			next; // iterate through ears, slicing them one by one
 
 		while (ear.prev !== ear.next) {
 			prev = ear.prev;
@@ -24540,8 +24541,8 @@
 
 	function isEar(ear) {
 		const a = ear.prev,
-					b = ear,
-					c = ear.next;
+			b = ear,
+			c = ear.next;
 		if (area(a, b, c) >= 0) return false; // reflex, can't be an ear
 		// now make sure we don't have other points inside the potential ear
 
@@ -24557,20 +24558,20 @@
 
 	function isEarHashed(ear, minX, minY, invSize) {
 		const a = ear.prev,
-					b = ear,
-					c = ear.next;
+			b = ear,
+			c = ear.next;
 		if (area(a, b, c) >= 0) return false; // reflex, can't be an ear
 		// triangle bbox; min & max are calculated like this for speed
 
 		const minTX = a.x < b.x ? a.x < c.x ? a.x : c.x : b.x < c.x ? b.x : c.x,
-					minTY = a.y < b.y ? a.y < c.y ? a.y : c.y : b.y < c.y ? b.y : c.y,
-					maxTX = a.x > b.x ? a.x > c.x ? a.x : c.x : b.x > c.x ? b.x : c.x,
-					maxTY = a.y > b.y ? a.y > c.y ? a.y : c.y : b.y > c.y ? b.y : c.y; // z-order range for the current triangle bbox;
+			minTY = a.y < b.y ? a.y < c.y ? a.y : c.y : b.y < c.y ? b.y : c.y,
+			maxTX = a.x > b.x ? a.x > c.x ? a.x : c.x : b.x > c.x ? b.x : c.x,
+			maxTY = a.y > b.y ? a.y > c.y ? a.y : c.y : b.y > c.y ? b.y : c.y; // z-order range for the current triangle bbox;
 
 		const minZ = zOrder(minTX, minTY, minX, minY, invSize),
-					maxZ = zOrder(maxTX, maxTY, minX, minY, invSize);
+			maxZ = zOrder(maxTX, maxTY, minX, minY, invSize);
 		let p = ear.prevZ,
-				n = ear.nextZ; // look for points inside the triangle in both directions
+			n = ear.nextZ; // look for points inside the triangle in both directions
 
 		while (p && p.z >= minZ && n && n.z <= maxZ) {
 			if (p !== ear.prev && p !== ear.next && pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) && area(p.prev, p, p.next) >= 0) return false;
@@ -24600,7 +24601,7 @@
 
 		do {
 			const a = p.prev,
-						b = p.next.next;
+				b = p.next.next;
 
 			if (!equals(a, b) && intersects(a, p, p.next, b) && locallyInside(a, b) && locallyInside(b, a)) {
 				triangles.push(a.i / dim);
@@ -24691,7 +24692,7 @@
 		const hx = hole.x;
 		const hy = hole.y;
 		let qx = -Infinity,
-				m; // find a segment intersected by a ray from the hole's leftmost point to the left;
+			m; // find a segment intersected by a ray from the hole's leftmost point to the left;
 		// segment's endpoint with lesser x will be potential connection point
 
 		do {
@@ -24720,10 +24721,10 @@
 		// otherwise choose the point of the minimum angle with the ray as connection point
 
 		const stop = m,
-					mx = m.x,
-					my = m.y;
+			mx = m.x,
+			my = m.y;
 		let tanMin = Infinity,
-				tan;
+			tan;
 		p = m;
 
 		do {
@@ -24767,14 +24768,14 @@
 
 	function sortLinked(list) {
 		let i,
-				p,
-				q,
-				e,
-				tail,
-				numMerges,
-				pSize,
-				qSize,
-				inSize = 1;
+			p,
+			q,
+			e,
+			tail,
+			numMerges,
+			pSize,
+			qSize,
+			inSize = 1;
 
 		do {
 			p = list;
@@ -24806,7 +24807,7 @@
 						qSize--;
 					}
 
-					if (tail) tail.nextZ = e;else list = e;
+					if (tail) tail.nextZ = e; else list = e;
 					e.prevZ = tail;
 					tail = e;
 				}
@@ -24840,7 +24841,7 @@
 
 	function getLeftmost(start) {
 		let p = start,
-				leftmost = start;
+			leftmost = start;
 
 		do {
 			if (p.x < leftmost.x || p.x === leftmost.x && p.y < leftmost.y) leftmost = p;
@@ -24858,9 +24859,9 @@
 
 	function isValidDiagonal(a, b) {
 		return a.next.i !== b.i && a.prev.i !== b.i && !intersectsPolygon(a, b) && ( // doesn't intersect other edges
-		locallyInside(a, b) && locallyInside(b, a) && middleInside(a, b) && ( // locally visible
-		area(a.prev, a, b.prev) || area(a, b.prev, b)) || // does not create opposite-facing sectors
-		equals(a, b) && area(a.prev, a, a.next) > 0 && area(b.prev, b, b.next) > 0); // special zero-length case
+			locallyInside(a, b) && locallyInside(b, a) && middleInside(a, b) && ( // locally visible
+				area(a.prev, a, b.prev) || area(a, b.prev, b)) || // does not create opposite-facing sectors
+			equals(a, b) && area(a.prev, a, a.next) > 0 && area(b.prev, b, b.next) > 0); // special zero-length case
 	} // signed area of a triangle
 
 
@@ -24921,9 +24922,9 @@
 
 	function middleInside(a, b) {
 		let p = a,
-				inside = false;
+			inside = false;
 		const px = (a.x + b.x) / 2,
-					py = (a.y + b.y) / 2;
+			py = (a.y + b.y) / 2;
 
 		do {
 			if (p.y > py !== p.next.y > py && p.next.y !== p.y && px < (p.next.x - p.x) * (py - p.y) / (p.next.y - p.y) + p.x) inside = !inside;
@@ -24937,9 +24938,9 @@
 
 	function splitPolygon(a, b) {
 		const a2 = new Node(a.i, a.x, a.y),
-					b2 = new Node(b.i, b.x, b.y),
-					an = a.next,
-					bp = b.prev;
+			b2 = new Node(b.i, b.x, b.y),
+			an = a.next,
+			bp = b.prev;
 		a.next = b;
 		b.prev = a;
 		a2.next = an;
@@ -25133,7 +25134,7 @@
 
 
 				let extrudePts,
-						extrudeByPath = false;
+					extrudeByPath = false;
 				let splineTube, binormal, normal, position2;
 
 				if (extrudePath) {
@@ -25192,7 +25193,7 @@
 				}
 
 				const vlen = vertices.length,
-							flen = faces.length; // Find directions for point movement
+					flen = faces.length; // Find directions for point movement
 
 				function getBevelVec(inPt, inPrev, inNext) {
 					// computes for inPt the corresponding point inPt' on a new contour
@@ -25206,9 +25207,9 @@
 					// http://geomalgorithms.com/a05-_intersect-1.html
 
 					const v_prev_x = inPt.x - inPrev.x,
-								v_prev_y = inPt.y - inPrev.y;
+						v_prev_y = inPt.y - inPrev.y;
 					const v_next_x = inNext.x - inPt.x,
-								v_next_y = inNext.y - inPt.y;
+						v_next_y = inNext.y - inPt.y;
 					const v_prev_lensq = v_prev_x * v_prev_x + v_prev_y * v_prev_y; // check for collinear edges
 
 					const collinear0 = v_prev_x * v_next_y - v_prev_y * v_next_x;
@@ -25285,7 +25286,7 @@
 
 				const holesMovements = [];
 				let oneHoleMovements,
-						verticesMovements = contourMovements.concat();
+					verticesMovements = contourMovements.concat();
 
 				for (let h = 0, hl = holes.length; h < hl; h++) {
 					const ahole = holes[h];
@@ -25462,9 +25463,9 @@
 							const slen1 = vlen * s;
 							const slen2 = vlen * (s + 1);
 							const a = layeroffset + j + slen1,
-										b = layeroffset + k + slen1,
-										c = layeroffset + k + slen2,
-										d = layeroffset + j + slen2;
+								b = layeroffset + k + slen1,
+								c = layeroffset + k + slen2,
+								d = layeroffset + j + slen2;
 							f4(a, b, c, d);
 						}
 					}
@@ -26929,7 +26930,7 @@
 		// converts an array to a specific type
 		convertArray: function (array, type, forceClone) {
 			if (!array || // let 'undefined' and 'null' pass
-			!forceClone && array.constructor === type) return array;
+				!forceClone && array.constructor === type) return array;
 
 			if (typeof type.BYTES_PER_ELEMENT === 'number') {
 				return new type(array); // create typed array
@@ -26972,7 +26973,7 @@
 		// function for parsing AOS keyframe formats
 		flattenJSON: function (jsonKeys, times, values, valuePropertyName) {
 			let i = 1,
-					key = jsonKeys[0];
+				key = jsonKeys[0];
 
 			while (key !== undefined && key[valuePropertyName] === undefined) {
 				key = jsonKeys[i++];
@@ -27180,8 +27181,8 @@
 		evaluate(t) {
 			const pp = this.parameterPositions;
 			let i1 = this._cachedIndex,
-					t1 = pp[i1],
-					t0 = pp[i1 - 1];
+				t1 = pp[i1],
+				t0 = pp[i1 - 1];
 
 			validate_interval: {
 				seek: {
@@ -27193,7 +27194,7 @@
 						//-
 						//- 				if ( t >= t1 || t1 === undefined ) {
 						forward_scan: if (!(t < t1)) {
-							for (let giveUpAt = i1 + 2;;) {
+							for (let giveUpAt = i1 + 2; ;) {
 								if (t1 === undefined) {
 									if (t < t0) break forward_scan; // after end
 
@@ -27231,7 +27232,7 @@
 							} // linear reverse scan
 
 
-							for (let giveUpAt = i1 - 2;;) {
+							for (let giveUpAt = i1 - 2; ;) {
 								if (t0 === undefined) {
 									// before start
 									this._cachedIndex = 0;
@@ -27302,9 +27303,9 @@
 		copySampleValue_(index) {
 			// copies a sample value to the result buffer
 			const result = this.resultBuffer,
-						values = this.sampleValues,
-						stride = this.valueSize,
-						offset = index * stride;
+				values = this.sampleValues,
+				stride = this.valueSize,
+				offset = index * stride;
 
 			for (let i = 0; i !== stride; ++i) {
 				result[i] = values[offset + i];
@@ -27347,9 +27348,9 @@
 		intervalChanged_(i1, t0, t1) {
 			const pp = this.parameterPositions;
 			let iPrev = i1 - 2,
-					iNext = i1 + 1,
-					tPrev = pp[iPrev],
-					tNext = pp[iNext];
+				iNext = i1 + 1,
+				tPrev = pp[iPrev],
+				tNext = pp[iNext];
 
 			if (tPrev === undefined) {
 				switch (this.getSettings_().endingStart) {
@@ -27396,7 +27397,7 @@
 			}
 
 			const halfDt = (t1 - t0) * 0.5,
-						stride = this.valueSize;
+				stride = this.valueSize;
 			this._weightPrev = halfDt / (t0 - tPrev);
 			this._weightNext = halfDt / (tNext - t1);
 			this._offsetPrev = iPrev * stride;
@@ -27405,17 +27406,17 @@
 
 		interpolate_(i1, t0, t, t1) {
 			const result = this.resultBuffer,
-						values = this.sampleValues,
-						stride = this.valueSize,
-						o1 = i1 * stride,
-						o0 = o1 - stride,
-						oP = this._offsetPrev,
-						oN = this._offsetNext,
-						wP = this._weightPrev,
-						wN = this._weightNext,
-						p = (t - t0) / (t1 - t0),
-						pp = p * p,
-						ppp = pp * p; // evaluate polynomials
+				values = this.sampleValues,
+				stride = this.valueSize,
+				o1 = i1 * stride,
+				o0 = o1 - stride,
+				oP = this._offsetPrev,
+				oN = this._offsetNext,
+				wP = this._weightPrev,
+				wN = this._weightNext,
+				p = (t - t0) / (t1 - t0),
+				pp = p * p,
+				ppp = pp * p; // evaluate polynomials
 
 			const sP = -wP * ppp + 2 * wP * pp - wP * p;
 			const s0 = (1 + wP) * ppp + (-1.5 - 2 * wP) * pp + (-0.5 + wP) * p + 1;
@@ -27438,12 +27439,12 @@
 
 		interpolate_(i1, t0, t, t1) {
 			const result = this.resultBuffer,
-						values = this.sampleValues,
-						stride = this.valueSize,
-						offset1 = i1 * stride,
-						offset0 = offset1 - stride,
-						weight1 = (t - t0) / (t1 - t0),
-						weight0 = 1 - weight1;
+				values = this.sampleValues,
+				stride = this.valueSize,
+				offset1 = i1 * stride,
+				offset0 = offset1 - stride,
+				weight1 = (t - t0) / (t1 - t0),
+				weight0 = 1 - weight1;
 
 			for (let i = 0; i !== stride; ++i) {
 				result[i] = values[offset0 + i] * weight0 + values[offset1 + i] * weight1;
@@ -27466,7 +27467,7 @@
 		}
 
 		interpolate_(i1
-		/*, t0, t, t1 */
+			/*, t0, t, t1 */
 		) {
 			return this.copySampleValue_(i1 - 1);
 		}
@@ -27606,9 +27607,9 @@
 
 		trim(startTime, endTime) {
 			const times = this.times,
-						nKeys = times.length;
+				nKeys = times.length;
 			let from = 0,
-					to = nKeys - 1;
+				to = nKeys - 1;
 
 			while (from !== nKeys && times[from] < startTime) {
 				++from;
@@ -27646,8 +27647,8 @@
 			}
 
 			const times = this.times,
-						values = this.values,
-						nKeys = times.length;
+				values = this.values,
+				nKeys = times.length;
 
 			if (nKeys === 0) {
 				console.error('THREE.KeyframeTrack: Track is empty.', this);
@@ -27696,10 +27697,10 @@
 		optimize() {
 			// times or values may be shared with other tracks, so overwriting is unsafe
 			const times = AnimationUtils.arraySlice(this.times),
-						values = AnimationUtils.arraySlice(this.values),
-						stride = this.getValueSize(),
-						smoothInterpolation = this.getInterpolation() === InterpolateSmooth,
-						lastIndex = times.length - 1;
+				values = AnimationUtils.arraySlice(this.values),
+				stride = this.getValueSize(),
+				smoothInterpolation = this.getInterpolation() === InterpolateSmooth,
+				lastIndex = times.length - 1;
 			let writeIndex = 1;
 
 			for (let i = 1; i < lastIndex; ++i) {
@@ -27711,8 +27712,8 @@
 					if (!smoothInterpolation) {
 						// remove unnecessary keyframes same as their neighbors
 						const offset = i * stride,
-									offsetP = offset - stride,
-									offsetN = offset + stride;
+							offsetP = offset - stride,
+							offsetN = offset + stride;
 
 						for (let j = 0; j !== stride; ++j) {
 							const value = values[offset + j];
@@ -27732,7 +27733,7 @@
 					if (i !== writeIndex) {
 						times[writeIndex] = times[i];
 						const readOffset = i * stride,
-									writeOffset = writeIndex * stride;
+							writeOffset = writeIndex * stride;
 
 						for (let j = 0; j !== stride; ++j) {
 							values[writeOffset + j] = values[readOffset + j];
@@ -27785,7 +27786,7 @@
 	 * A Track of Boolean keyframe values.
 	 */
 
-	class BooleanKeyframeTrack extends KeyframeTrack {}
+	class BooleanKeyframeTrack extends KeyframeTrack { }
 
 	BooleanKeyframeTrack.prototype.ValueTypeName = 'bool';
 	BooleanKeyframeTrack.prototype.ValueBufferType = Array;
@@ -27797,7 +27798,7 @@
 	 * A Track of keyframe values that represent color.
 	 */
 
-	class ColorKeyframeTrack extends KeyframeTrack {}
+	class ColorKeyframeTrack extends KeyframeTrack { }
 
 	ColorKeyframeTrack.prototype.ValueTypeName = 'color'; // ValueBufferType is inherited
 
@@ -27805,7 +27806,7 @@
 	 * A Track of numeric keyframe values.
 	 */
 
-	class NumberKeyframeTrack extends KeyframeTrack {}
+	class NumberKeyframeTrack extends KeyframeTrack { }
 
 	NumberKeyframeTrack.prototype.ValueTypeName = 'number'; // ValueBufferType is inherited
 
@@ -27820,9 +27821,9 @@
 
 		interpolate_(i1, t0, t, t1) {
 			const result = this.resultBuffer,
-						values = this.sampleValues,
-						stride = this.valueSize,
-						alpha = (t - t0) / (t1 - t0);
+				values = this.sampleValues,
+				stride = this.valueSize,
+				alpha = (t - t0) / (t1 - t0);
 			let offset = i1 * stride;
 
 			for (let end = offset + stride; offset !== end; offset += 4) {
@@ -27854,7 +27855,7 @@
 	 * A Track that interpolates Strings
 	 */
 
-	class StringKeyframeTrack extends KeyframeTrack {}
+	class StringKeyframeTrack extends KeyframeTrack { }
 
 	StringKeyframeTrack.prototype.ValueTypeName = 'string';
 	StringKeyframeTrack.prototype.ValueBufferType = Array;
@@ -27866,7 +27867,7 @@
 	 * A Track of vectored keyframe values.
 	 */
 
-	class VectorKeyframeTrack extends KeyframeTrack {}
+	class VectorKeyframeTrack extends KeyframeTrack { }
 
 	VectorKeyframeTrack.prototype.ValueTypeName = 'vector'; // ValueBufferType is inherited
 
@@ -27885,8 +27886,8 @@
 
 		static parse(json) {
 			const tracks = [],
-						jsonTracks = json.tracks,
-						frameTime = 1.0 / (json.fps || 1.0);
+				jsonTracks = json.tracks,
+				frameTime = 1.0 / (json.fps || 1.0);
 
 			for (let i = 0, n = jsonTracks.length; i !== n; ++i) {
 				tracks.push(parseKeyframeTrack(jsonTracks[i]).scale(frameTime));
@@ -27899,7 +27900,7 @@
 
 		static toJSON(clip) {
 			const tracks = [],
-						clipTracks = clip.tracks;
+				clipTracks = clip.tracks;
 			const json = {
 				'name': clip.name,
 				'duration': clip.duration,
@@ -28165,7 +28166,7 @@
 
 		if (json.times === undefined) {
 			const times = [],
-						values = [];
+				values = [];
 			AnimationUtils.flattenJSON(json.keys, times, values, 'value');
 			json.times = times;
 			json.values = values;
@@ -28307,7 +28308,7 @@
 			this.requestHeader = {};
 		}
 
-		load() {}
+		load() { }
 
 		loadAsync(url, onProgress) {
 			const scope = this;
@@ -28316,7 +28317,7 @@
 			});
 		}
 
-		parse() {}
+		parse() { }
 
 		setCrossOrigin(crossOrigin) {
 			this.crossOrigin = crossOrigin;
@@ -29079,24 +29080,24 @@
 			this._frameExtents = new Vector2(4, 2);
 			this._viewportCount = 6;
 			this._viewports = [// These viewports map a cube-map onto a 2D texture with the
-			// following orientation:
-			//
-			//	xzXZ
-			//	 y Y
-			//
-			// X - Positive x direction
-			// x - Negative x direction
-			// Y - Positive y direction
-			// y - Negative y direction
-			// Z - Positive z direction
-			// z - Negative z direction
-			// positive X
-			new Vector4(2, 1, 1, 1), // negative X
-			new Vector4(0, 1, 1, 1), // positive Z
-			new Vector4(3, 1, 1, 1), // negative Z
-			new Vector4(1, 1, 1, 1), // positive Y
-			new Vector4(3, 0, 1, 1), // negative Y
-			new Vector4(1, 0, 1, 1)];
+				// following orientation:
+				//
+				//	xzXZ
+				//	 y Y
+				//
+				// X - Positive x direction
+				// x - Negative x direction
+				// Y - Positive y direction
+				// y - Negative y direction
+				// Z - Positive z direction
+				// z - Negative z direction
+				// positive X
+				new Vector4(2, 1, 1, 1), // negative X
+				new Vector4(0, 1, 1, 1), // positive Z
+				new Vector4(3, 1, 1, 1), // negative Z
+				new Vector4(1, 1, 1, 1), // positive Y
+				new Vector4(3, 0, 1, 1), // negative Y
+				new Vector4(1, 0, 1, 1)];
 			this._cubeDirections = [new Vector3(1, 0, 0), new Vector3(-1, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 0, -1), new Vector3(0, 1, 0), new Vector3(0, -1, 0)];
 			this._cubeUps = [new Vector3(0, 1, 0), new Vector3(0, 1, 0), new Vector3(0, 1, 0), new Vector3(0, 1, 0), new Vector3(0, 0, 1), new Vector3(0, 0, -1)];
 		}
@@ -29283,8 +29284,8 @@
 		getAt(normal, target) {
 			// normal is assumed to be unit length
 			const x = normal.x,
-						y = normal.y,
-						z = normal.z;
+				y = normal.y,
+				z = normal.z;
 			const coeff = this.coefficients; // band 0
 
 			target.copy(coeff[0]).multiplyScalar(0.282095); // band 1
@@ -29307,8 +29308,8 @@
 		getIrradianceAt(normal, target) {
 			// normal is assumed to be unit length
 			const x = normal.x,
-						y = normal.y,
-						z = normal.z;
+				y = normal.y,
+				z = normal.z;
 			const coeff = this.coefficients; // band 0
 
 			target.copy(coeff[0]).multiplyScalar(0.886227); // π * 0.282095
@@ -29405,8 +29406,8 @@
 		static getBasisAt(normal, shBasis) {
 			// normal is assumed to be unit length
 			const x = normal.x,
-						y = normal.y,
-						z = normal.z; // band 0
+				y = normal.y,
+				z = normal.z; // band 0
 
 			shBasis[0] = 0.282095; // band 1
 
@@ -31413,8 +31414,8 @@
 			// note: happily accumulating nothing when weight = 0, the caller knows
 			// the weight and shouldn't have made the call in the first place
 			const buffer = this.buffer,
-						stride = this.valueSize,
-						offset = accuIndex * stride + stride;
+				stride = this.valueSize,
+				offset = accuIndex * stride + stride;
 			let currentWeight = this.cumulativeWeight;
 
 			if (currentWeight === 0) {
@@ -31438,8 +31439,8 @@
 
 		accumulateAdditive(weight) {
 			const buffer = this.buffer,
-						stride = this.valueSize,
-						offset = stride * this._addIndex;
+				stride = this.valueSize,
+				offset = stride * this._addIndex;
 
 			if (this.cumulativeWeightAdditive === 0) {
 				// add = identity
@@ -31455,11 +31456,11 @@
 
 		apply(accuIndex) {
 			const stride = this.valueSize,
-						buffer = this.buffer,
-						offset = accuIndex * stride + stride,
-						weight = this.cumulativeWeight,
-						weightAdditive = this.cumulativeWeightAdditive,
-						binding = this.binding;
+				buffer = this.buffer,
+				offset = accuIndex * stride + stride,
+				weight = this.cumulativeWeight,
+				weightAdditive = this.cumulativeWeightAdditive,
+				binding = this.binding;
 			this.cumulativeWeight = 0;
 			this.cumulativeWeightAdditive = 0;
 
@@ -31488,8 +31489,8 @@
 		saveOriginalState() {
 			const binding = this.binding;
 			const buffer = this.buffer,
-						stride = this.valueSize,
-						originalValueOffset = stride * this._origIndex;
+				stride = this.valueSize,
+				originalValueOffset = stride * this._origIndex;
 			binding.getValue(buffer, originalValueOffset); // accu[0..1] := orig -- initially detect changes against the original
 
 			for (let i = stride, e = originalValueOffset; i !== e; ++i) {
@@ -31614,7 +31615,7 @@
 			this.bind(); // bind all binding
 
 			const firstValidIndex = this._targetGroup.nCachedObjects_,
-						binding = this._bindings[firstValidIndex]; // and only call .getValue on the first
+				binding = this._bindings[firstValidIndex]; // and only call .getValue on the first
 
 			if (binding !== undefined) binding.getValue(array, offset);
 		}
@@ -31760,9 +31761,9 @@
 		} // these are used to "bind" a nonexistent property
 
 
-		_getValue_unavailable() {}
+		_getValue_unavailable() { }
 
-		_setValue_unavailable() {} // Getters
+		_setValue_unavailable() { } // Getters
 
 
 		_getValue_direct(buffer, offset) {
@@ -32034,10 +32035,10 @@
 	};
 	PropertyBinding.prototype.GetterByBindingType = [PropertyBinding.prototype._getValue_direct, PropertyBinding.prototype._getValue_array, PropertyBinding.prototype._getValue_arrayElement, PropertyBinding.prototype._getValue_toArray];
 	PropertyBinding.prototype.SetterByBindingTypeAndVersioning = [[// Direct
-	PropertyBinding.prototype._setValue_direct, PropertyBinding.prototype._setValue_direct_setNeedsUpdate, PropertyBinding.prototype._setValue_direct_setMatrixWorldNeedsUpdate], [// EntireArray
-	PropertyBinding.prototype._setValue_array, PropertyBinding.prototype._setValue_array_setNeedsUpdate, PropertyBinding.prototype._setValue_array_setMatrixWorldNeedsUpdate], [// ArrayElement
-	PropertyBinding.prototype._setValue_arrayElement, PropertyBinding.prototype._setValue_arrayElement_setNeedsUpdate, PropertyBinding.prototype._setValue_arrayElement_setMatrixWorldNeedsUpdate], [// HasToFromArray
-	PropertyBinding.prototype._setValue_fromArray, PropertyBinding.prototype._setValue_fromArray_setNeedsUpdate, PropertyBinding.prototype._setValue_fromArray_setMatrixWorldNeedsUpdate]];
+		PropertyBinding.prototype._setValue_direct, PropertyBinding.prototype._setValue_direct_setNeedsUpdate, PropertyBinding.prototype._setValue_direct_setMatrixWorldNeedsUpdate], [// EntireArray
+		PropertyBinding.prototype._setValue_array, PropertyBinding.prototype._setValue_array_setNeedsUpdate, PropertyBinding.prototype._setValue_array_setMatrixWorldNeedsUpdate], [// ArrayElement
+		PropertyBinding.prototype._setValue_arrayElement, PropertyBinding.prototype._setValue_arrayElement_setNeedsUpdate, PropertyBinding.prototype._setValue_arrayElement_setMatrixWorldNeedsUpdate], [// HasToFromArray
+		PropertyBinding.prototype._setValue_fromArray, PropertyBinding.prototype._setValue_fromArray_setNeedsUpdate, PropertyBinding.prototype._setValue_fromArray_setMatrixWorldNeedsUpdate]];
 
 	/**
 	 *
@@ -32114,18 +32115,18 @@
 
 		add() {
 			const objects = this._objects,
-						indicesByUUID = this._indicesByUUID,
-						paths = this._paths,
-						parsedPaths = this._parsedPaths,
-						bindings = this._bindings,
-						nBindings = bindings.length;
+				indicesByUUID = this._indicesByUUID,
+				paths = this._paths,
+				parsedPaths = this._parsedPaths,
+				bindings = this._bindings,
+				nBindings = bindings.length;
 			let knownObject = undefined,
-					nObjects = objects.length,
-					nCachedObjects = this.nCachedObjects_;
+				nObjects = objects.length,
+				nCachedObjects = this.nCachedObjects_;
 
 			for (let i = 0, n = arguments.length; i !== n; ++i) {
 				const object = arguments[i],
-							uuid = object.uuid;
+					uuid = object.uuid;
 				let index = indicesByUUID[uuid];
 
 				if (index === undefined) {
@@ -32141,7 +32142,7 @@
 					knownObject = objects[index]; // move existing object to the ACTIVE region
 
 					const firstActiveIndex = --nCachedObjects,
-								lastCachedObject = objects[firstActiveIndex];
+						lastCachedObject = objects[firstActiveIndex];
 					indicesByUUID[lastCachedObject.uuid] = index;
 					objects[index] = lastCachedObject;
 					indicesByUUID[uuid] = firstActiveIndex;
@@ -32149,7 +32150,7 @@
 
 					for (let j = 0, m = nBindings; j !== m; ++j) {
 						const bindingsForPath = bindings[j],
-									lastCached = bindingsForPath[firstActiveIndex];
+							lastCached = bindingsForPath[firstActiveIndex];
 						let binding = bindingsForPath[index];
 						bindingsForPath[index] = lastCached;
 
@@ -32174,20 +32175,20 @@
 
 		remove() {
 			const objects = this._objects,
-						indicesByUUID = this._indicesByUUID,
-						bindings = this._bindings,
-						nBindings = bindings.length;
+				indicesByUUID = this._indicesByUUID,
+				bindings = this._bindings,
+				nBindings = bindings.length;
 			let nCachedObjects = this.nCachedObjects_;
 
 			for (let i = 0, n = arguments.length; i !== n; ++i) {
 				const object = arguments[i],
-							uuid = object.uuid,
-							index = indicesByUUID[uuid];
+					uuid = object.uuid,
+					index = indicesByUUID[uuid];
 
 				if (index !== undefined && index >= nCachedObjects) {
 					// move existing object into the CACHED region
 					const lastCachedIndex = nCachedObjects++,
-								firstActiveObject = objects[lastCachedIndex];
+						firstActiveObject = objects[lastCachedIndex];
 					indicesByUUID[firstActiveObject.uuid] = index;
 					objects[index] = firstActiveObject;
 					indicesByUUID[uuid] = lastCachedIndex;
@@ -32195,8 +32196,8 @@
 
 					for (let j = 0, m = nBindings; j !== m; ++j) {
 						const bindingsForPath = bindings[j],
-									firstActive = bindingsForPath[lastCachedIndex],
-									binding = bindingsForPath[index];
+							firstActive = bindingsForPath[lastCachedIndex],
+							binding = bindingsForPath[index];
 						bindingsForPath[index] = firstActive;
 						bindingsForPath[lastCachedIndex] = binding;
 					}
@@ -32210,16 +32211,16 @@
 
 		uncache() {
 			const objects = this._objects,
-						indicesByUUID = this._indicesByUUID,
-						bindings = this._bindings,
-						nBindings = bindings.length;
+				indicesByUUID = this._indicesByUUID,
+				bindings = this._bindings,
+				nBindings = bindings.length;
 			let nCachedObjects = this.nCachedObjects_,
-					nObjects = objects.length;
+				nObjects = objects.length;
 
 			for (let i = 0, n = arguments.length; i !== n; ++i) {
 				const object = arguments[i],
-							uuid = object.uuid,
-							index = indicesByUUID[uuid];
+					uuid = object.uuid,
+					index = indicesByUUID[uuid];
 
 				if (index !== undefined) {
 					delete indicesByUUID[uuid];
@@ -32227,9 +32228,9 @@
 					if (index < nCachedObjects) {
 						// object is cached, shrink the CACHED region
 						const firstActiveIndex = --nCachedObjects,
-									lastCachedObject = objects[firstActiveIndex],
-									lastIndex = --nObjects,
-									lastObject = objects[lastIndex]; // last cached object takes this object's place
+							lastCachedObject = objects[firstActiveIndex],
+							lastIndex = --nObjects,
+							lastObject = objects[lastIndex]; // last cached object takes this object's place
 
 						indicesByUUID[lastCachedObject.uuid] = index;
 						objects[index] = lastCachedObject; // last object goes to the activated slot and pop
@@ -32240,8 +32241,8 @@
 
 						for (let j = 0, m = nBindings; j !== m; ++j) {
 							const bindingsForPath = bindings[j],
-										lastCached = bindingsForPath[firstActiveIndex],
-										last = bindingsForPath[lastIndex];
+								lastCached = bindingsForPath[firstActiveIndex],
+								last = bindingsForPath[lastIndex];
 							bindingsForPath[index] = lastCached;
 							bindingsForPath[firstActiveIndex] = last;
 							bindingsForPath.pop();
@@ -32249,7 +32250,7 @@
 					} else {
 						// object is active, just swap with the last and pop
 						const lastIndex = --nObjects,
-									lastObject = objects[lastIndex];
+							lastObject = objects[lastIndex];
 
 						if (lastIndex > 0) {
 							indicesByUUID[lastObject.uuid] = index;
@@ -32282,11 +32283,11 @@
 			const bindings = this._bindings;
 			if (index !== undefined) return bindings[index];
 			const paths = this._paths,
-						parsedPaths = this._parsedPaths,
-						objects = this._objects,
-						nObjects = objects.length,
-						nCachedObjects = this.nCachedObjects_,
-						bindingsForPath = new Array(nObjects);
+				parsedPaths = this._parsedPaths,
+				objects = this._objects,
+				nObjects = objects.length,
+				nCachedObjects = this.nCachedObjects_,
+				bindingsForPath = new Array(nObjects);
 			index = bindings.length;
 			indicesByPath[path] = index;
 			paths.push(path);
@@ -32305,15 +32306,15 @@
 			// tells the group to forget about a property path and no longer
 			// update the array previously obtained with 'subscribe_'
 			const indicesByPath = this._bindingsIndicesByPath,
-						index = indicesByPath[path];
+				index = indicesByPath[path];
 
 			if (index !== undefined) {
 				const paths = this._paths,
-							parsedPaths = this._parsedPaths,
-							bindings = this._bindings,
-							lastBindingsIndex = bindings.length - 1,
-							lastBindings = bindings[lastBindingsIndex],
-							lastBindingsPath = path[lastBindingsIndex];
+					parsedPaths = this._parsedPaths,
+					bindings = this._bindings,
+					lastBindingsIndex = bindings.length - 1,
+					lastBindings = bindings[lastBindingsIndex],
+					lastBindingsPath = path[lastBindingsIndex];
 				indicesByPath[lastBindingsPath] = index;
 				bindings[index] = lastBindings;
 				bindings.pop();
@@ -32333,8 +32334,8 @@
 			this._localRoot = localRoot;
 			this.blendMode = blendMode;
 			const tracks = clip.tracks,
-						nTracks = tracks.length,
-						interpolants = new Array(nTracks);
+				nTracks = tracks.length,
+				interpolants = new Array(nTracks);
 			const interpolantSettings = {
 				endingStart: ZeroCurvatureEnding,
 				endingEnd: ZeroCurvatureEnding
@@ -32457,9 +32458,9 @@
 
 			if (warp) {
 				const fadeInDuration = this._clip.duration,
-							fadeOutDuration = fadeOutAction._clip.duration,
-							startEndRatio = fadeOutDuration / fadeInDuration,
-							endStartRatio = fadeInDuration / fadeOutDuration;
+					fadeOutDuration = fadeOutAction._clip.duration,
+					startEndRatio = fadeOutDuration / fadeInDuration,
+					endStartRatio = fadeInDuration / fadeOutDuration;
 				fadeOutAction.warp(1.0, startEndRatio, duration);
 				this.warp(endStartRatio, 1.0, duration);
 			}
@@ -32515,8 +32516,8 @@
 
 		warp(startTimeScale, endTimeScale, duration) {
 			const mixer = this._mixer,
-						now = mixer.time,
-						timeScale = this.timeScale;
+				now = mixer.time,
+				timeScale = this.timeScale;
 			let interpolant = this._timeScaleInterpolant;
 
 			if (interpolant === null) {
@@ -32525,7 +32526,7 @@
 			}
 
 			const times = interpolant.parameterPositions,
-						values = interpolant.sampleValues;
+				values = interpolant.sampleValues;
 			times[0] = now;
 			times[1] = now + duration;
 			values[0] = startTimeScale / timeScale;
@@ -32702,7 +32703,7 @@
 						break handle_stop;
 					}
 
-					if (this.clampWhenFinished) this.paused = true;else this.enabled = false;
+					if (this.clampWhenFinished) this.paused = true; else this.enabled = false;
 					this.time = time;
 
 					this._mixer.dispatchEvent({
@@ -32737,7 +32738,7 @@
 
 					if (pending <= 0) {
 						// have to stop (switch state, clamp time, fire event)
-						if (this.clampWhenFinished) this.paused = true;else this.enabled = false;
+						if (this.clampWhenFinished) this.paused = true; else this.enabled = false;
 						time = deltaTime > 0 ? duration : 0;
 						this.time = time;
 
@@ -32803,7 +32804,7 @@
 
 		_scheduleFading(duration, weightNow, weightThen) {
 			const mixer = this._mixer,
-						now = mixer.time;
+				now = mixer.time;
 			let interpolant = this._weightInterpolant;
 
 			if (interpolant === null) {
@@ -32812,7 +32813,7 @@
 			}
 
 			const times = interpolant.parameterPositions,
-						values = interpolant.sampleValues;
+				values = interpolant.sampleValues;
 			times[0] = now;
 			values[0] = weightNow;
 			times[1] = now + duration;
@@ -32838,12 +32839,12 @@
 
 		_bindAction(action, prototypeAction) {
 			const root = action._localRoot || this._root,
-						tracks = action._clip.tracks,
-						nTracks = tracks.length,
-						bindings = action._propertyBindings,
-						interpolants = action._interpolants,
-						rootUuid = root.uuid,
-						bindingsByRoot = this._bindingsByRootAndName;
+				tracks = action._clip.tracks,
+				nTracks = tracks.length,
+				bindings = action._propertyBindings,
+				interpolants = action._interpolants,
+				rootUuid = root.uuid,
+				bindingsByRoot = this._bindingsByRootAndName;
 			let bindingsByName = bindingsByRoot[rootUuid];
 
 			if (bindingsByName === undefined) {
@@ -32853,7 +32854,7 @@
 
 			for (let i = 0; i !== nTracks; ++i) {
 				const track = tracks[i],
-							trackName = track.name;
+					trackName = track.name;
 				let binding = bindingsByName[trackName];
 
 				if (binding !== undefined) {
@@ -32892,8 +32893,8 @@
 					// this action has been forgotten by the cache, but the user
 					// appears to be still using it -> rebind
 					const rootUuid = (action._localRoot || this._root).uuid,
-								clipUuid = action._clip.uuid,
-								actionsForClip = this._actionsByClip[clipUuid];
+						clipUuid = action._clip.uuid,
+						actionsForClip = this._actionsByClip[clipUuid];
 
 					this._bindAction(action, actionsForClip && actionsForClip.knownActions[0]);
 
@@ -32996,7 +32997,7 @@
 
 		_addInactiveAction(action, clipUuid, rootUuid) {
 			const actions = this._actions,
-						actionsByClip = this._actionsByClip;
+				actionsByClip = this._actionsByClip;
 			let actionsForClip = actionsByClip[clipUuid];
 
 			if (actionsForClip === undefined) {
@@ -33019,24 +33020,24 @@
 
 		_removeInactiveAction(action) {
 			const actions = this._actions,
-						lastInactiveAction = actions[actions.length - 1],
-						cacheIndex = action._cacheIndex;
+				lastInactiveAction = actions[actions.length - 1],
+				cacheIndex = action._cacheIndex;
 			lastInactiveAction._cacheIndex = cacheIndex;
 			actions[cacheIndex] = lastInactiveAction;
 			actions.pop();
 			action._cacheIndex = null;
 			const clipUuid = action._clip.uuid,
-						actionsByClip = this._actionsByClip,
-						actionsForClip = actionsByClip[clipUuid],
-						knownActionsForClip = actionsForClip.knownActions,
-						lastKnownAction = knownActionsForClip[knownActionsForClip.length - 1],
-						byClipCacheIndex = action._byClipCacheIndex;
+				actionsByClip = this._actionsByClip,
+				actionsForClip = actionsByClip[clipUuid],
+				knownActionsForClip = actionsForClip.knownActions,
+				lastKnownAction = knownActionsForClip[knownActionsForClip.length - 1],
+				byClipCacheIndex = action._byClipCacheIndex;
 			lastKnownAction._byClipCacheIndex = byClipCacheIndex;
 			knownActionsForClip[byClipCacheIndex] = lastKnownAction;
 			knownActionsForClip.pop();
 			action._byClipCacheIndex = null;
 			const actionByRoot = actionsForClip.actionByRoot,
-						rootUuid = (action._localRoot || this._root).uuid;
+				rootUuid = (action._localRoot || this._root).uuid;
 			delete actionByRoot[rootUuid];
 
 			if (knownActionsForClip.length === 0) {
@@ -33065,9 +33066,9 @@
 			//									<-swap->
 			//								 a				s
 			const actions = this._actions,
-						prevIndex = action._cacheIndex,
-						lastActiveIndex = this._nActiveActions++,
-						firstInactiveAction = actions[lastActiveIndex];
+				prevIndex = action._cacheIndex,
+				lastActiveIndex = this._nActiveActions++,
+				firstInactiveAction = actions[lastActiveIndex];
 			action._cacheIndex = lastActiveIndex;
 			actions[lastActiveIndex] = action;
 			firstInactiveAction._cacheIndex = prevIndex;
@@ -33081,9 +33082,9 @@
 			//				 <-swap->
 			//				s				a
 			const actions = this._actions,
-						prevIndex = action._cacheIndex,
-						firstInactiveIndex = --this._nActiveActions,
-						lastActiveAction = actions[firstInactiveIndex];
+				prevIndex = action._cacheIndex,
+				firstInactiveIndex = --this._nActiveActions,
+				lastActiveAction = actions[firstInactiveIndex];
 			action._cacheIndex = firstInactiveIndex;
 			actions[firstInactiveIndex] = action;
 			lastActiveAction._cacheIndex = prevIndex;
@@ -33093,7 +33094,7 @@
 
 		_addInactiveBinding(binding, rootUuid, trackName) {
 			const bindingsByRoot = this._bindingsByRootAndName,
-						bindings = this._bindings;
+				bindings = this._bindings;
 			let bindingByName = bindingsByRoot[rootUuid];
 
 			if (bindingByName === undefined) {
@@ -33108,13 +33109,13 @@
 
 		_removeInactiveBinding(binding) {
 			const bindings = this._bindings,
-						propBinding = binding.binding,
-						rootUuid = propBinding.rootNode.uuid,
-						trackName = propBinding.path,
-						bindingsByRoot = this._bindingsByRootAndName,
-						bindingByName = bindingsByRoot[rootUuid],
-						lastInactiveBinding = bindings[bindings.length - 1],
-						cacheIndex = binding._cacheIndex;
+				propBinding = binding.binding,
+				rootUuid = propBinding.rootNode.uuid,
+				trackName = propBinding.path,
+				bindingsByRoot = this._bindingsByRootAndName,
+				bindingByName = bindingsByRoot[rootUuid],
+				lastInactiveBinding = bindings[bindings.length - 1],
+				cacheIndex = binding._cacheIndex;
 			lastInactiveBinding._cacheIndex = cacheIndex;
 			bindings[cacheIndex] = lastInactiveBinding;
 			bindings.pop();
@@ -33127,9 +33128,9 @@
 
 		_lendBinding(binding) {
 			const bindings = this._bindings,
-						prevIndex = binding._cacheIndex,
-						lastActiveIndex = this._nActiveBindings++,
-						firstInactiveBinding = bindings[lastActiveIndex];
+				prevIndex = binding._cacheIndex,
+				lastActiveIndex = this._nActiveBindings++,
+				firstInactiveBinding = bindings[lastActiveIndex];
 			binding._cacheIndex = lastActiveIndex;
 			bindings[lastActiveIndex] = binding;
 			firstInactiveBinding._cacheIndex = prevIndex;
@@ -33138,9 +33139,9 @@
 
 		_takeBackBinding(binding) {
 			const bindings = this._bindings,
-						prevIndex = binding._cacheIndex,
-						firstInactiveIndex = --this._nActiveBindings,
-						lastActiveBinding = bindings[firstInactiveIndex];
+				prevIndex = binding._cacheIndex,
+				firstInactiveIndex = --this._nActiveBindings,
+				lastActiveBinding = bindings[firstInactiveIndex];
 			binding._cacheIndex = firstInactiveIndex;
 			bindings[firstInactiveIndex] = binding;
 			lastActiveBinding._cacheIndex = prevIndex;
@@ -33150,7 +33151,7 @@
 
 		_lendControlInterpolant() {
 			const interpolants = this._controlInterpolants,
-						lastActiveIndex = this._nActiveControlInterpolants++;
+				lastActiveIndex = this._nActiveControlInterpolants++;
 			let interpolant = interpolants[lastActiveIndex];
 
 			if (interpolant === undefined) {
@@ -33164,9 +33165,9 @@
 
 		_takeBackControlInterpolant(interpolant) {
 			const interpolants = this._controlInterpolants,
-						prevIndex = interpolant.__cacheIndex,
-						firstInactiveIndex = --this._nActiveControlInterpolants,
-						lastActiveInterpolant = interpolants[firstInactiveIndex];
+				prevIndex = interpolant.__cacheIndex,
+				firstInactiveIndex = --this._nActiveControlInterpolants,
+				lastActiveInterpolant = interpolants[firstInactiveIndex];
 			interpolant.__cacheIndex = firstInactiveIndex;
 			interpolants[firstInactiveIndex] = interpolant;
 			lastActiveInterpolant.__cacheIndex = prevIndex;
@@ -33178,7 +33179,7 @@
 
 		clipAction(clip, optionalRoot, blendMode) {
 			const root = optionalRoot || this._root,
-						rootUuid = root.uuid;
+				rootUuid = root.uuid;
 			let clipObject = typeof clip === 'string' ? AnimationClip.findByName(root, clip) : clip;
 			const clipUuid = clipObject !== null ? clipObject.uuid : clip;
 			const actionsForClip = this._actionsByClip[clipUuid];
@@ -33222,10 +33223,10 @@
 
 		existingAction(clip, optionalRoot) {
 			const root = optionalRoot || this._root,
-						rootUuid = root.uuid,
-						clipObject = typeof clip === 'string' ? AnimationClip.findByName(root, clip) : clip,
-						clipUuid = clipObject ? clipObject.uuid : clip,
-						actionsForClip = this._actionsByClip[clipUuid];
+				rootUuid = root.uuid,
+				clipObject = typeof clip === 'string' ? AnimationClip.findByName(root, clip) : clip,
+				clipUuid = clipObject ? clipObject.uuid : clip,
+				actionsForClip = this._actionsByClip[clipUuid];
 
 			if (actionsForClip !== undefined) {
 				return actionsForClip.actionByRoot[rootUuid] || null;
@@ -33237,7 +33238,7 @@
 
 		stopAllAction() {
 			const actions = this._actions,
-						nActions = this._nActiveActions;
+				nActions = this._nActiveActions;
 
 			for (let i = nActions - 1; i >= 0; --i) {
 				actions[i].stop();
@@ -33250,10 +33251,10 @@
 		update(deltaTime) {
 			deltaTime *= this.timeScale;
 			const actions = this._actions,
-						nActions = this._nActiveActions,
-						time = this.time += deltaTime,
-						timeDirection = Math.sign(deltaTime),
-						accuIndex = this._accuIndex ^= 1; // run active actions
+				nActions = this._nActiveActions,
+				time = this.time += deltaTime,
+				timeDirection = Math.sign(deltaTime),
+				accuIndex = this._accuIndex ^= 1; // run active actions
 
 			for (let i = 0; i !== nActions; ++i) {
 				const action = actions[i];
@@ -33263,7 +33264,7 @@
 
 
 			const bindings = this._bindings,
-						nBindings = this._nActiveBindings;
+				nBindings = this._nActiveBindings;
 
 			for (let i = 0; i !== nBindings; ++i) {
 				bindings[i].apply(accuIndex);
@@ -33291,9 +33292,9 @@
 
 		uncacheClip(clip) {
 			const actions = this._actions,
-						clipUuid = clip.uuid,
-						actionsByClip = this._actionsByClip,
-						actionsForClip = actionsByClip[clipUuid];
+				clipUuid = clip.uuid,
+				actionsByClip = this._actionsByClip,
+				actionsForClip = actionsByClip[clipUuid];
 
 			if (actionsForClip !== undefined) {
 				// note: just calling _removeInactiveAction would mess up the
@@ -33307,7 +33308,7 @@
 					this._deactivateAction(action);
 
 					const cacheIndex = action._cacheIndex,
-								lastInactiveAction = actions[actions.length - 1];
+						lastInactiveAction = actions[actions.length - 1];
 					action._cacheIndex = null;
 					action._byClipCacheIndex = null;
 					lastInactiveAction._cacheIndex = cacheIndex;
@@ -33324,11 +33325,11 @@
 
 		uncacheRoot(root) {
 			const rootUuid = root.uuid,
-						actionsByClip = this._actionsByClip;
+				actionsByClip = this._actionsByClip;
 
 			for (const clipUuid in actionsByClip) {
 				const actionByRoot = actionsByClip[clipUuid].actionByRoot,
-							action = actionByRoot[rootUuid];
+					action = actionByRoot[rootUuid];
 
 				if (action !== undefined) {
 					this._deactivateAction(action);
@@ -33338,7 +33339,7 @@
 			}
 
 			const bindingsByRoot = this._bindingsByRootAndName,
-						bindingByName = bindingsByRoot[rootUuid];
+				bindingByName = bindingsByRoot[rootUuid];
 
 			if (bindingByName !== undefined) {
 				for (const trackName in bindingByName) {
@@ -34109,7 +34110,7 @@
 			const step = size / divisions;
 			const halfSize = size / 2;
 			const vertices = [],
-						colors = [];
+				colors = [];
 
 			for (let i = 0, j = 0, k = -halfSize; i <= divisions; i++, k += step) {
 				vertices.push(-halfSize, 0, k, halfSize, 0, k);
@@ -34343,7 +34344,7 @@
 			const geometry = this.geometry;
 			const pointMap = this.pointMap;
 			const w = 1,
-						h = 1; // we need just camera projection matrix inverse
+				h = 1; // we need just camera projection matrix inverse
 			// world matrix must be identity
 
 			_camera.projectionMatrixInverse.copy(this.camera.projectionMatrixInverse); // center / target
