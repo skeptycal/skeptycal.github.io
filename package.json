@@ -1,14 +1,15 @@
 {
   "name": "skeptycal",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "dat.gui": "^0.7.9"
   },
   "dependencies": {
     "three": "^0.141.0"
