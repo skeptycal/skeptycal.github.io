@@ -21,9 +21,12 @@ dblog(mesh)
 // points.add(m.mesh)
 
 const light = new THREE.DirectionalLight(0xffffff, 1)
+const backLight = new THREE.DirectionalLight(0xffffff, -1)
 
 light.position.set(0, 0, 1)
+backLight.position.set(0, 0, -1)
 r.scene.add(light)
+r.scene.add(backLight)
 
 
 
