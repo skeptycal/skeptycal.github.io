@@ -18,22 +18,31 @@ export class Shape {
 
     // update for animation changes
     update() {
-        this.mesh.geometry.dispose()
+        // this.mesh.geometry.dispose()
         this.mesh.geometry = defaultPlaneGeometry()
         this.updateVertices()
     }
 
     updateVertices() {
+        this.updateVertexHeights()
+    }
+
+    updateVertexHeights() {
         const { array } = this.mesh.geometry.attributes.position
+
+        const dz = world.plane.dz * 0.01
+        const halfdz = dz * 0.5
 
         for (let i = 0; i < array.length; i += 3) {
             // dblog("[%d,%d,%d]", i, i + 1, i + 2) //! debug
-            array[i + 2] += Math.random() - 0.5
+            array[i + 2] += dz * Math.random() - halfdz
         }
     }
 
     // TODO sample rotation
     animate() {
+        // this.mesh.animations
+
         // this.mesh.rotation.x += 0.01
         // this.mesh.rotation.y += 0.02
         // this.mesh.rotation.z += 0.005

@@ -19,6 +19,9 @@ export class GUI {
         this.addSlider('height', 1, 20)
         this.addSlider('widthSegments', 1, 200)
         this.addSlider('heightSegments', 1, 200)
+        this.addSlider('dx', 1, 100)
+        this.addSlider('dy', 1, 100)
+        this.addSlider('dz', 1, 100)
         this.update()
     }
 
