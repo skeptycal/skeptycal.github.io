@@ -23,7 +23,7 @@ document.body.appendChild(renderer.domElement)
 // dblog(renderer.domElement)
 // dblog(renderer)
 
-
+const BoxGeometry = new THREE.BoxGeometry(20, 20, 10, 10)
 
 
 
