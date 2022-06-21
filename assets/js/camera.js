@@ -13,3 +13,6 @@ export function defaultCamera() {
     camera.position.z = defaultCameraPosition
     return camera
 }
+
+// camera = new THREE.PerspectiveCamera( fieldOfViewAngle, aspect, near, far );
+// camera = new THREE.OrthographicCamera( left, right, top, bottom, near, far );

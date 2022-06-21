@@ -6,6 +6,9 @@ export const world = {
         heightSegments: 40,
         dx: 10,
         dy: 10,
-        dz: 10
+        dz: 10,
+        red: 0.2,
+        green: 0,
+        blue: 0.8,
     }
 }
