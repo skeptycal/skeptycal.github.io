@@ -3,25 +3,28 @@ import { debug, dblog } from './assets/js/debug'
 import * as CAM from './assets/js/camera'
 // import * as LIGHT from './assets/js/light'
 
-export const mouse = {
-    x: undefined,
-    y: undefined,
-    rawX: undefined,
-    rawY: undefined,
-}
+// export const mouse = {
+//     x: undefined,
+//     y: undefined,
+//     rawX: undefined,
+//     rawY: undefined,
+// }
 
 // const resizeUpdateInterval = 500
 // const defaultControls = true
 const scene = new THREE.Scene()
 // dblog(scene)
+
 const camera = CAM.defaultCamera()
 // dblog(camera)
+
 const renderer = new THREE.WebGLRenderer()
+renderer.clearColor = 0x000000
 renderer.setSize(innerWidth, innerHeight)
+dblog(renderer)
 
 document.body.appendChild(renderer.domElement)
 // dblog(renderer.domElement)
-// dblog(renderer)
 
 const BoxGeometry = new THREE.BoxGeometry(20, 20, 10, 10)
 
